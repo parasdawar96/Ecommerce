@@ -1,0 +1,28 @@
+.bread-crumb{
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    &__content{
+        display: flex;
+        flex-direction: row;
+        color:#b5b5b5;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        &__listItem{
+            &__link{
+                color:#b5b5b5;
+                &:hover{
+                    color:#000;
+                    font-weight: 400;
+                    text-decoration: none;
+                }
+            }
+            &::after{
+                margin:0 0.5rem;
+                content: "/";
+            }   
+        }
+
+    }
+}

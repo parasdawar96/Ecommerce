@@ -1,0 +1,40 @@
+.header-logo{
+    font-size: 2.5rem;
+    display: flex;
+    padding: 0.5rem 2rem;
+    background-color: #f8f8f8;
+}
+
+.footer-payment-info{
+    background-color: #f8f8f8;
+    padding:1rem  2rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    .footer-payment-content{
+  
+        ul{
+            list-style: none;
+            display: flex;
+            li{
+                padding-right: 0.8em;
+                img{
+                    width: 5rem;
+                    height: 3rem;
+                }
+            }
+        }
+    }
+    .footer-payment-copyright{
+        color:#696b79; 
+    }
+}
+.cart-container{
+    margin: 0 auto;
+    max-width: unset;
+    width: 75%;
+    .order-container{
+        border-left: 1px solid #f1f1f1;
+       
+    }
+}

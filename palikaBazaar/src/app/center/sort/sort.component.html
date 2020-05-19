@@ -1,0 +1,25 @@
+<div class="products-header">
+    <div class="products-header-content">
+        <span class="products-header-content__Heading">Mens Clothing</span>
+        <span class="products-header-content__count">({{productsCount}})</span>
+    </div>
+    <!-- <mat-form-field matFormControl class="products-header__dropdown">
+      <mat-label>Sort</mat-label>
+        <select matNativeControl required>
+          <option value="price_desc">Price High to Low</option>
+          <option value="price_asc">price Low to High </option>
+          <option value="discount_desc">Discount High to Low</option>
+          <option value="discount_asc">Discount Low to High</option>
+        </select>
+      </mat-form-field> -->
+      <div class="products-header__dropdown">
+        <ng-select [items]="sortList" (change)="updateSort($event)"
+                bindValue="value"
+                [clearable]="false"
+                   bindLabel="viewValue"
+                   placeholder="Sort"
+                   [(ngModel)]="selectedOption">
+        </ng-select>
+      </div>
+     
+</div>

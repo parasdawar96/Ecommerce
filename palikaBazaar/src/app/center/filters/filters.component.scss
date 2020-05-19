@@ -1,0 +1,52 @@
+.filter-container{
+
+    .filter-heading{
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 1rem;
+        padding: 0.35rem 0;
+        margin: 0;
+        border-bottom: 1px solid #aba9a9;
+    }
+    .filter-content{
+        border-right: 1px solid #aba9a9;
+        font-size: 0.9rem;
+        .category-content{
+            padding: 0.7rem;
+            //border-bottom: 1px solid #aba9a9;
+            border-bottom: 1px solid #aba9a9;
+            border-left: none;
+            &__Header{
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 0.5rem;
+                align-items: center;
+                &_Heading{
+                    font-weight: 600;
+                    text-transform: uppercase;
+                }
+            }
+    
+            &__list{
+                list-style: none;
+                &__item{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    margin-bottom: 0.2rem;
+                    &__checkbox{
+                        margin-right: 0.8rem;
+                    }
+                    &__name{
+                        margin-right: 0.4rem;
+                    }
+                    &__count{
+                        font-size: 0.7rem;
+                        color: #aba9a9;
+                    }
+                }
+            }
+        }
+    }
+    
+}

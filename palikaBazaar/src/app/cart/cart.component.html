@@ -1,0 +1,32 @@
+<div>
+    <div class="header-logo">
+        PALIKA BAZAAR
+    </div>
+    <div class="container cart-container">
+        <div class="row">
+            <div class="col-sm-8">
+                <!-- <app-bag></app-bag> -->
+                <!-- <app-address></app-address> -->
+                <router-outlet></router-outlet>
+            </div>
+            <div class="col-sm-4 order-container">
+                <order-summary></order-summary>
+            </div>
+        </div>
+       
+    </div>
+    <div class="footer-payment-info">
+        <div class="footer-payment-content">
+            <ul>
+                <li><a><img src="../../assets/img/mastercard.svg"></a></li>                    
+                <li><a><img src="../../assets/img/visa.svg"></a></li>
+                <li><a><img src="../../assets/img/paypal.svg"></a></li>
+                <li><a><img src="../../assets/img/paytm.svg"></a></li>
+            </ul>
+        </div>
+        <div class="footer-payment-copyright">
+           <span> &copy;2020 Dawar Ltd. All rights reserved.</span> 
+        </div>
+    </div>
+</div>
+

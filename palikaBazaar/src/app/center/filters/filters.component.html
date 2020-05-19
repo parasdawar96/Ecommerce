@@ -1,0 +1,57 @@
+<div class="filter-container">
+    <div class="filter-heading">
+        <h5 >Filters</h5>
+    </div>
+
+    <div *ngIf="filterList" class="filter-content">
+<!-- 
+        "filterObj": {
+            //     "department": [
+            //         {
+            //             "_id": null,
+            //             "count": 2
+            //         }
+            //     ],
+            //     "brand": [
+            //         {
+            //             "Adidas": "1",
+            //         }, -->
+        <div *ngFor="let filterItem of objectKeys(filterList)" class="category-content">
+            <div class="category-content__Header">
+                <span class="category-content__Header_Heading"> {{filterItem}}</span>
+                <!-- <span class="category-content__Header_Icon" ><a>+</a></span> -->
+            </div>
+            <!-- [ngModelOptions]="{standalone: true}" -->
+            <ul class="category-content__list">
+                <li *ngFor="let itemType of filterList[filterItem]" class="category-content__list__item">
+                    <input class="category-content__list__item__checkbox" (ngModelChange)="applyFilter($event,itemType,filterItem)"
+                    [(ngModel)]="itemType.checked"  type="checkbox">
+                    <span class="category-content__list__item__name"> {{itemType._id}} </span>
+                    <span class="category-content__list__item__count"> ({{itemType.value}}) </span>
+                </li>
+                <!-- <li class="category-content__list__item">
+                    <input class="category-content__list__item__checkbox" type="checkbox">
+                    <span class="category-content__list__item__name"> Tshirts </span>
+                    <span class="category-content__list__item__count"> (6789) </span>
+                </li>.
+
+                <li class="category-content__list__item">
+                    <input class="category-content__list__item__checkbox" type="checkbox">
+                    <span class="category-content__list__item__name"> Jeans </span>
+                    <span class="category-content__list__item__count"> (1897) </span>
+                </li>
+                <li class="category-content__list__item">
+                    <input class="category-content__list__item__checkbox" type="checkbox">
+                    <span class="category-content__list__item__name"> Trousers </span>
+                    <span class="category-content__list__item__count"> (2556) </span>
+                </li>
+                <li class="category-content__list__item">
+                    <input class="category-content__list__item__checkbox" type="checkbox">
+                    <span class="category-content__list__item__name"> Jackets </span>
+                    <span class="category-content__list__item__count"> (1458) </span>
+                </li> -->
+            </ul>
+        </div>
+        
+    </div>
+</div>

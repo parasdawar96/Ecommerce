@@ -1,0 +1,129 @@
+.about-text{
+    text-align: center;
+    padding: 3.5rem 7rem;
+    background-color: #e6e6e6;
+}
+
+.newsletter{
+    background: #f4f4f4;
+    padding: 3.5rem 7rem;
+
+    &-content{
+        align-content: center;
+        &__Heading{
+            font-size: 1.75rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        &__subHeading{
+            color: #585858;
+            font-weight: 400;
+            font-size: 1.25rem;
+            text-align: center;
+        }
+    }
+
+  form{
+    max-width: 32rem;
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+
+  
+
+    button{
+        padding: 5px;
+        width: 100px;
+        height: 38px;
+        img{
+            width: 22px;
+            height: 22px;
+        }
+    }
+    input{
+        width: 75%;
+        padding: 5px;
+    }
+}
+
+
+
+
+.footer-social{
+    background-color: #e6e6e6;
+    &__content{
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: row;
+        margin: 0 3.5rem;
+        padding: 3.5rem 0;
+        border-bottom: 1px solid;
+
+        &__column{
+            font-size: 1rem;
+
+            .footer-social__content__heading{
+                text-transform: uppercase;
+                font-weight: 500;
+                padding-bottom: 0.8rem;
+                display: block;
+            }
+            ul{
+                text-decoration: none;
+                list-style: none; 
+                color:#696b79; 
+                li{
+                    padding-bottom: 0.4rem;
+                }   
+            }
+
+            
+        }
+
+        .icons{
+            ul{
+                display: flex;
+                li{
+                    padding-bottom: none;
+                    padding-right: 0.8rem;
+                }        
+                img{
+                    width: 1.45rem;
+                    height: 1.45rem;
+                }
+            }
+        }
+
+        
+    }
+    .footer-payment-info{
+        padding: 2rem 0;
+        margin: 0 3.5rem;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        .footer-payment-content{
+            .footer-social__content__heading{
+                text-transform: uppercase;
+                font-weight: 500;
+                padding-bottom: 0.8rem;
+                display: block;
+            }
+            ul{
+                list-style: none;
+                display: flex;
+                li{
+                    padding-right: 0.8em;
+                    img{
+                        width: 5rem;
+                        height: 3rem;
+                    }
+                }
+            }
+        }
+        .footer-payment-copyright{
+            color:#696b79; 
+        }
+    }
+}

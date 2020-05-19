@@ -1,0 +1,110 @@
+<header>
+    <div class="header-content clearfix">
+        <div class="header-logo">
+            PALIKA BAZAAR
+        </div>
+        <!-- navbar-light bg-light -->
+        <nav class="header-navbar">
+            <div class="header-navbar-links">
+                <div class="header-nav-content">
+                    <div class="header-link">
+                        <a class="link_men" [routerLink]="'/products'" [queryParams]="{gender:'men'}"  >MEN</a>
+                        <div class="dropdown-backdrop">
+                            <div class="dropdown-content">
+                                <div class="row category-content">
+                                    <div class="col-sm-3  category-list">
+                                        <span>CLOTHING</span>
+                                        <ul>
+    
+                                            <li>Beach & Swim</li>
+                                            <li>Coats & Jackets</li>
+                                            <li>Hoodies & Jumpers</li>
+                                            <li>Jeans</li>
+                                            <li>Polo Shirts</li>
+                                            <li>Shirts</li>
+                                            <li>Sweatpants & Trousers</li>
+                                            <li>T-Shirts</li>
+                                            <li>Tracksuits</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-3 even-column-content category-list">
+                                        <span> SHOES </span>
+                                        <ul>
+                                            <li>Boots & Loafers</li>
+                                            <li>Sliders & Sandals</li>
+                                            <li>Trainers & Sneakers</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-3  category-list">
+                                        <span>ACCESSORIES</span>
+                                        <ul>
+                                            <li>Belts</li>
+                                            <li>Wallets</li>
+                                            <li>Hats</li>
+                                            <li>Sunglasses</li>
+                                            <li>Cufflinks</li>
+                                            <li>Hats</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-3 even-column-content category-list">
+                                        <span>ACCESSORIES</span>
+                                        <ul>
+                                            <li>Belts</li>
+                                            <li>Wallets</li>
+                                            <li>Hats</li>
+                                            <li>Sunglasses</li>
+                                            <li>Cufflinks</li>
+                                            <li>Hats</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
+
+                </div>
+                <div class="header-nav-content">
+                    <div class="header-link">
+                        <a  [routerLink]="'/products'" [queryParams]="{gender:'women'}">WOMEN</a>
+                    </div>
+                </div>
+                <div class="header-nav-content">
+                    <div class="header-link">
+                        <a href="#">KIDS</a>
+                    </div>
+                </div>
+                <div class="header-nav-content">
+                    <div class="header-link">
+                        <a href="#">ESSENTIALS </a>
+                    </div>
+                </div>
+                <div class="header-nav-content">
+                    <div class="header-link">
+                        <a href="#">SALE</a>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+
+        <div class="header-search">
+            <input type="text" name="search" placeholder="Search for products, brands and more" autocomplete="off">
+        </div>
+
+        <div class="header-actions">
+            <a  [routerLink]="'/account/login'"><img src="../../assets/img/user.svg">
+                <span>Profile</span>
+            </a>
+
+            <a  [routerLink]="'/cart/bag'"><img src="../../assets/img/bag.svg">
+                <span>Bag</span>
+            </a>
+        </div>
+
+
+    </div>
+
+</header>

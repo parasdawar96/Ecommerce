@@ -1,0 +1,91 @@
+<div class="main-container">
+    <div>
+        <bread-crumb></bread-crumb>
+    </div>
+
+    <div *ngIf="productObj" class="container product-detail-container">
+        <div class=" row product-detail">
+            <div class=" col-sm-8 product-detail_image">
+                <!-- <div class="product-detail_image_small_container">
+                <div class="product-detail_image_small_container__others">
+                    <img src="../../../assets/img/myntra_shirt1.png">
+                </div>
+                <div class="product-detail_image_small_container__others">
+                    <img src="../../../assets/img/myntra_shirt1.png">
+                </div>
+                <div class="product-detail_image_small_container__others">
+                    <img src="../../../assets/img/myntra_shirt1.png">
+                </div>
+                <div class="product-detail_image_small_container__others">
+                    <img src="../../../assets/img/myntra_shirt1.png">
+                </div>
+            </div>
+            <div class="product-detail_image_big_container">
+                <img src="../../../assets/img/myntra_shirt1.png">
+            </div> -->
+                <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+            </div>
+            <div class=" col-sm-4 product-detail_content ">
+                <span class="product-detail_content_brand">{{productObj.brand}}</span>
+                <span class="product-detail_content_desc">{{productObj.description}}</span>
+                <div class="product-detail_content_price_details">
+                    <span class="product-detail_content_price_details_price">Rs.{{productObj.discountedPrice}}</span>
+                    <span class="product-detail_content_price_details_oldPrice">Rs. {{productObj.price}}</span>
+                    <span class="product-detail_content_price_details_discount">({{productObj.discount}}% OFF)</span>
+                </div>
+                <span class="product-detail_content_tax">inclusive of all taxes</span>
+                <span class="product-detail_content_sizeHeading">SELECT SIZE</span>
+                <div [hidden]="!selectSizeError" class="sizeError" >
+                    Please select a size
+                </div>
+                <div  class="product-detail_content_sizeButton">
+                    <button id="size-{{sizeItem}}" (click)="setSelectedSize($event,sizeItem)" *ngFor="let sizeItem of objectKeys(sizeList)">
+                        <p>{{sizeItem}}</p>
+                    </button>
+                </div>
+                <span class="product-detail_content_sizeQuote">Buy your usual size:<span>This item runs true to
+                        size</span></span>
+                <div class="product-detail_content_addToBag">
+                    <button *ngIf="!cartButtonClicked" (click)="addToBag($event)" class="product-detail_content_addToBag_button">
+                        <span   class="product-detail_content_addToBag_button_content">
+                            <a><img src="../../../assets/img/bag-white.svg"></a>
+                            <span>ADD TO BAG</span>
+                        </span>
+                        
+                    </button>
+                    <button (click)="goToBag($event)" *ngIf="cartButtonClicked" class="product-detail_content_addToBag_button" >
+                        <span  class="product-detail_content_addToBag_button_content">
+                            <span>Go To Bag</span>
+                            <a><img src="../../../assets/img/right-arrow.svg"></a>
+                            
+                        </span>
+                    </button>
+                    <div [hidden]="!addProductError" class="sizeError" >
+                        Product Already Added
+                    </div>
+                
+                </div>
+                <div class="product-detail_content_modelSize">
+                    <div class="product-detail_content_modelSize_heading">Size & Fit</div>
+                    <div>The model (height 6' and shoulders 18") is wearing a size M</div>
+                </div>
+
+
+
+
+                <div class="product-detail_content_details">
+                    <div>100% Original Products</div>
+                    <div>Free Delivery on order above Rs. 1199</div>
+                    <div>Pay on delivery might be available</div>
+                    <div>Easy 30 days returns and exchanges</div>
+                    <div>Try & Buy might be available</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+

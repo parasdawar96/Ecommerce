@@ -1,0 +1,28 @@
+.products-header{
+    border-bottom: 1px solid #aba9a9;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: flex-start;
+    border-bottom: 1px solid #aba9a9;
+    padding:0.6rem 1rem;
+    margin: 0;
+    
+    &-content{
+        
+        &__Heading{
+            font-weight: 700;
+            padding-right: 0.7rem;
+            
+        }
+        &__count{
+            color:  #aba9a9;
+        }
+     
+    }
+    &__dropdown{
+        height: 1rem;
+        width: 14rem;
+    }
+
+}

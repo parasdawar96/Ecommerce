@@ -1,0 +1,36 @@
+<div *ngIf="cartProducts" class="bag-container">
+    <div class="bag-container-heading">
+        <span class="bag-container-heading-text"> My Bag </span>({{cartProducts.length}} Items)
+    </div>
+    <div class="bag-content">
+        <ul>
+            <li *ngFor="let item of cartProducts">
+                <div class="product-details">
+                    <a class="product-link">
+                        <img class="product-link-image" src="../../../assets/img/myntra_shirt1.png">
+                    </a>
+                    <div class="product-content">
+                        <div class="product-content-brand">
+                            {{item.brand}}
+                        </div>
+                        <div class="product-content-name">
+                            {{item.description}}
+                        </div>
+                        <div class="product-content-price">
+                            <span class="product-content-price-new">Rs {{item.discountedPrice}}</span>
+                            <span class="product-content-price-old">Rs {{item.price}}</span>
+                        </div>
+                        <div class="product-content-attribute">
+                            <span class="product-content-attribute-size"><span>Size:</span>{{item.size}}
+                            </span>
+                            <span class="product-content-attribute-qty"><span>Quantity:</span>1</span>
+                        </div>
+                        <div class="product-content-remove">
+                            <button (click)="removeItemFromCart(item)">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

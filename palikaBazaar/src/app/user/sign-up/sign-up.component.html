@@ -1,0 +1,46 @@
+<div class="signUp-container">
+    <div class="signUp-content">
+        <h4>Sign Up</h4>
+
+        <form class="signUp-content-form" #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
+
+            <label> Full Name: </label>
+            <input required type="text" #fullName="ngModel" [(ngModel)]="commonService.selectedUser.name" name="name" placeholder="Full Name">
+            <div class="error_element" *ngIf="signUpForm.submitted &&  !fullName.valid">
+                <label  class="validation-message"> This field is required.</label>
+            </div>
+            <label> Email: </label>
+            <input required [pattern]="emailRegex" type="text"  #email="ngModel" [(ngModel)]="commonService.selectedUser.email" name="email" placeholder="Email">
+            <div class="error_element" *ngIf="signUpForm.submitted &&  !email.valid">
+                <label *ngIf="email.errors.required" class="validation-message"> This field is required.</label>
+                <label *ngIf="email.errors.pattern"  class="validation-message"> Invalid email address.</label>
+            </div>
+            <label> Password: </label>
+            <input required type="password" [minlength]="6"  #password="ngModel" [(ngModel)]="commonService.selectedUser.password" name="password" placeholder="Password">
+            <div class="error_element" *ngIf="signUpForm.submitted &&  !password.valid">
+                <label *ngIf="password.errors.required" class="validation-message">This field is required.</label>
+                <label *ngIf="password.errors.minlength"  class="validation-message">Enter atleast 6 characters.</label>
+            </div>
+            <label> Confirm Password: </label>
+        
+            <input required [pattern]="password.value" type="password" #confirmPassword="ngModel" [(ngModel)]="commonService.selectedUser.confirmPassword" name="confirmPassword" placeholder="Confirm Password">
+            <div class="error_element"  *ngIf="signUpForm.submitted &&  !confirmPassword.valid">
+                <label *ngIf="confirmPassword.errors.required" class="validation-message"> This field is required.</label>
+                <label *ngIf="confirmPassword.errors.pattern"  class="validation-message">Confirm Password does not match.</label>
+            </div>
+
+
+            <input type="submit" value="Sign Up"> 
+        </form>
+
+        <div class="already-account-content">
+            <span>Already have an account?</span>   
+            <button [routerLink]="'/account/login'">Sign In</button>
+        </div>
+        <div *ngIf="serverErrorMessages">
+            {{serverErrorMessages}}
+        </div>
+    </div>
+   
+    
+</div>

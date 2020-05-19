@@ -1,0 +1,21 @@
+<div class="products-container">
+    <ul *ngIf="productList" class="products-content">
+        <li class="products-content__item" *ngFor="let item of productList">
+            <a [routerLink]="['/product-details', item._id]" class="products-content__item__Link">
+                <div class="products-content__item__Link__Image">
+                    <img src="http://localhost:3001{{item.picture}}">
+                </div>
+                <div class="products-content__item__Link__details">
+                    <span class="product-brand" >{{item.brand}}</span>
+                    <span class="product-desc">{{item.description}}</span>
+                    <div class="product-price__details">
+                        <span class="product-newPrice">{{item.discountedPrice}}</span>
+                        <span class="product-oldPrice">{{item.price}}</span>
+                        <span class="product-discount">({{item.discount}}% OFF)</span>
+                    </div>
+                     
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>

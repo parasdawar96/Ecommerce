@@ -1,0 +1,71 @@
+.signUp-container{
+    display: flex;
+    background-color: #eee;
+    width: 100%;
+    height: 100vh;
+}
+
+.signUp-content{
+    width: 25%;
+    margin:5rem auto auto;
+    background-color: #fff;
+    padding: 2rem;
+    font-size: 1rem;
+    h4{
+        font-size: 1.6rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+       
+    }
+    &-form{
+       
+        display: flex;
+        flex-direction: column;
+     
+        input{
+            padding: 0.5rem;
+            background-color: #e3e3e3;
+            border: none;
+            
+        }
+        input[type=submit]{
+            background-color: #080808;
+            color: #f4f4f4;
+            margin: 1.5rem auto 0;
+            width: 100%;
+           
+        }
+        label{
+            margin-top: 0.6rem;
+        }
+    }
+
+    .already-account-content{
+        width: 85%;
+        margin: 0 auto;
+        margin-top: 0.5rem;;
+        button{
+            margin-left: 0.5rem;
+            background-color: transparent;
+            border: none;
+            font-weight: 500;
+            &:hover{
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+
+.validation-message{
+    color: #ff5722;
+    font-size: 0.7rem;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+}
+
+.error_element{
+    line-height: 1;
+}
