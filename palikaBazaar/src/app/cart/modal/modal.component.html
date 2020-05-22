@@ -1,0 +1,16 @@
+<div *ngIf="showModal" class="customModal"  role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div>
+                <h4 style="margin: 0;" class="modal-content__Heading">
+                    {{modalHeader}}
+                </h4>
+                <button class="text-align-right closeButton" (click)="closeModal()">
+                    <img style="width:1rem;height: 0.7rem;" src="../../../assets/img/close.svg">
+                </button>
+            </div>
+           <ng-content></ng-content>
+        </div>
+
+    </div>
+</div>

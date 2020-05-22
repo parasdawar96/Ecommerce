@@ -1,60 +1,112 @@
-
 <div class="address-container">
-    <div class="address-content">
+    <div *ngIf="addressList" class="address-content">
         <div class="address-heading">
             <span>SELECT DELIVERY ADDRESS</span>
-            <span><button>+Add address</button></span>
+            <span><button (click)="addAddress()">+Add address</button></span>
         </div>
         <ul class="address-container">
-            <li class="address-item">
+            <li *ngFor="let item of addressList" class="address-item">
                 <div>
                     <input type="radio">
                 </div>
                 <div>
                     <div class="address-item-username">
-                        Paras Dawar
+                        {{item.name}}
                     </div>
                     <div class="address-item-address">
-                        13/182 Geeta Colony, near 13 block gurudwara
+                        {{item.address}}
                     </div>
                     <div class="address-item-city">
-                        East Delhi 110031,
+                        {{item.locality}} {{item.pincode}},
                     </div>
                     <div class="address-item-state">
-                        Delhi, India
+                        {{item.state}}, India
                     </div>
                     <div class="product-content-mobile">
-                       Mobile: <span>8800387824 </span>
+                        Mobile: <span>{{item.mobile}} </span>
                     </div>
                 </div>
-              
-
             </li>
-            <li class="address-item">
-                <div>
-                    <input type="radio">
-                </div>
-                <div>
-                    <div class="address-item-username">
-                        Paras Dawar
-                    </div>
-                    <div class="address-item-address">
-                        13/182 Geeta Colony, near 13 block gurudwara
-                    </div>
-                    <div class="address-item-city">
-                        East Delhi 110031,
-                    </div>
-                    <div class="address-item-state">
-                        Delhi, India
-                    </div>
-                    <div class="product-content-mobile">
-                       Mobile: <span>8800387824 </span>
-                    </div>
-                </div>
-              
-
-            </li>
-          
         </ul>
     </div>
 </div>
+
+<app-modal [showModal]="showModal" (updateshowModal)="updateshowModal($event)" [modalHeader]="modalHeader">
+    <div class="new-address-container">
+        <div class="new-address-content">
+            <form  #addressForm="ngForm"
+                (ngSubmit)="addressForm.valid && onSubmit(addressForm)">
+                <div class="contact-info">
+                    <span class="contact-info-heading" >Contact Details</span>
+                    <div class="contact-info-inputBox">
+                                    
+                        <input autocomplete="off" required type="text" #name="ngModel" [(ngModel)]="addModel.name"
+                        name="name" >
+                        <label> Name<span class="asterisk">*</span> </label>       
+                    </div>
+                    <div class="error_element" *ngIf="addressForm.submitted &&  !name.valid">
+                        <label  class="validation-message"> This field is required.</label>
+                    </div>
+                    <!-- <div class="error_element" *ngIf="addressForm.submitted &&  !password.valid">
+                        <label *ngIf="password.errors?.required" class="validation-message">This field is required.</label>
+                        <label *ngIf="password.errors?.minlength"  class="validation-message">Enter atleast 6 characters.</label>
+                    </div> -->
+                    <div class="contact-info-inputBox">
+                                  
+                        <input autocomplete="off" [pattern]=
+                        "'[1-9][0-9]{9}'" maxlength="10"  required type="text" #mobile="ngModel" [(ngModel)]="addModel.mobile"
+                        name="mobile" >
+                        <label> Mobile No<span class="asterisk">*</span> </label>          
+                    </div>
+                    <div class="error_element" *ngIf="addressForm.submitted &&  !mobile.valid">
+                        <label *ngIf="mobile.errors?.required" class="validation-message">This field is required.</label>
+                        <label *ngIf="mobile.errors?.pattern"  class="validation-message">Mobile no. should have 10 digits.</label>
+                    </div>
+                </div>
+                <div class="address-info">
+                    <span class="address-info-heading" >Address</span>
+                    <div class="address-info-inputBox">
+                                            
+                        <input autocomplete="off" required maxlength="6" [pattern]="'^[1-9][0-9]{5}$'" type="text" #pincode="ngModel" [(ngModel)]="addModel.pincode"
+                        name="pincode" >
+                        <label> Pin Code<span class="asterisk">*</span> </label>
+                    </div>
+                    <div class="error_element" *ngIf="addressForm.submitted &&  !pincode.valid">
+                        <label *ngIf="pincode.errors?.required" class="validation-message">This field is required.</label>
+                        <label *ngIf="pincode.errors?.pattern"  class="validation-message">Pincode should have 6 digits.</label>
+                    </div>
+                    <div class="address-info-inputBox" >
+                                        
+                        <input autocomplete="off" required 
+                        type="text" #address="ngModel" [(ngModel)]="addModel.address"
+                        name="address" >
+                        <label> Address<span class="asterisk">*</span> </label>   
+                    </div>
+                    <div class="error_element" *ngIf="addressForm.submitted &&  !address.valid">
+                        <label  class="validation-message"> This field is required.</label>
+                    </div>
+                    <div class="address-info-inputBox">
+                              
+                        <input autocomplete="off" required type="text" #locality="ngModel" [(ngModel)]="addModel.locality"
+                        name="locality" >
+                        <label> Locality/Town<span class="asterisk">*</span> </label>          
+                    </div>
+                    <div class="error_element" *ngIf="addressForm.submitted &&  !locality.valid">
+                        <label  class="validation-message"> This field is required.</label>
+                    </div>
+                    <div class="address-info-locationBox"> 
+                        <input autocomplete="off"  type="text"  #city="ngModel" [(ngModel)]="addModel.city"
+                        name="city" placeholder="City">
+                        <input autocomplete="off"  type="text"  #state="ngModel" [(ngModel)]="addModel.state"
+                        name="state" placeholder="State">
+                    </div>
+                  
+                </div>
+                <div class="submit-button">
+                    <input type="submit" value="Submit"> 
+                </div>
+          
+            </form>
+        </div>
+    </div>
+</app-modal>

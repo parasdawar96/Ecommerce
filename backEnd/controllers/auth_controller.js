@@ -62,6 +62,30 @@ module.exports={
             else
                 return res.status(200).json({status:true,user:lodash.pick(user,['name','email'])});
         })
+    },
+
+
+    addAddress(req,res){
+        console.log("inside add address");
+        let id= req.params.id;
+        let addressObj= req.body.address;
+
+        User.updateOne({_id:id},{$push:{"address":{$each:[addressObj]}}},(err,data)=>{
+            if("err in update address",err);
+            else{
+                res.status(200).send(data);
+            }
+        })        
+    },
+
+    fetchAddress(req,res){
+        console.log("inside fetch address");
+        let id=req.params.id;
+        User.findOne({_id:id},(err,user)=>{
+            if(err) return req.status(404).json({status:false,message:"User not found"});
+            else
+                return res.status(200).json({status:true,user:lodash.pick(user,['address'])});
+        })
     }
 
 

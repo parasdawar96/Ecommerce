@@ -19,7 +19,8 @@ const user = new Schema({
         required:`password can't be empty`,
         minlength:[6,'Password must be atleast 6 characters long']
     },
-    saltSecret:String
+    saltSecret:String,
+    address:Array
     
 });
 
@@ -40,6 +41,7 @@ user.pre('save',function (next){
 
 user.methods.verifyPassword= function(password){
     console.log("this inside verify password",this);
+    console.log("verify Password",password);
     return bcrypt.compareSync(password,this.password);
 };
 

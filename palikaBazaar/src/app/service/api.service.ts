@@ -57,4 +57,14 @@ export class ApiService {
         return this.http.put(environment.apiBaseUrl+ "/cart/remove/"+id,body,httpOptions);
     }
 
+
+    addAddress(id,body){
+        return this.http.post(environment.apiBaseUrl+ "/account/addAddress/"+id,body,authHttpOptions);
+    }
+
+    
+    fetchAddress(id){
+        return this.http.get(environment.apiBaseUrl+ "/account/fetchAddress/"+id,authHttpOptions);
+    }
+
 }

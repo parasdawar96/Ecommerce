@@ -62,6 +62,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     ProductMainComponent,
 
 
+
   ],
   imports: [
     BrowserModule,
