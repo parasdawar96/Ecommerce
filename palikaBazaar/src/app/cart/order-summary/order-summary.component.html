@@ -22,11 +22,18 @@
         <div class="order-content-saving" >You are saving Rs {{cartSummary.discount}} on this order.</div>
         <div class="order-content-final">
             <span>Final Amount</span>
-            <span>Rs {{cartSummary.payable}}</span>
+            <span>Rs{{cartSummary.payable}}</span>
         </div>
         <div class="order-content-button">
             <button *ngIf="!loggedIn" (click)="setPreviousRoute()" [routerLink]="'/account/login'" >Login First</button>
-            <button *ngIf="loggedIn"   [routerLink]="'/cart/address'" >Select Delivery Address</button>
+            <span *ngIf="loggedIn ">
+                <button   *ngIf="inCart" (click)="goToAddress()" [routerLink]="'/cart/address'" >Select Delivery Address</button>
+                <button  *ngIf="!inCart" (click)="checkSelectedAddress()" >Place Order</button>
+            </span>
+
+            <!-- [routerLink]="'/cart/checkout'" -->
+
+           
         </div>
     </div>
 </div>

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
     providedIn: 'root'
@@ -11,13 +10,18 @@ export class ProductStateService {
     protected _productDetailResponse: Object;
     protected _orderSummary: object;
     protected _isLoading: boolean;
-
+    protected _cartProducts: Array<object>;
+    protected _deliveryAddress: object;
+    protected _filterObj: object;
+    
 
     public productResponseObs$: BehaviorSubject<Object>;
     public productDetailObs$: BehaviorSubject<Object>;
     public orderSummaryObs$: BehaviorSubject<object>;
     public isLoadingObs$:BehaviorSubject<boolean>;
-
+    public cartProductObs$: BehaviorSubject<Array<object>>;
+    public deliveryAddressObs$:BehaviorSubject<object>;
+    public filterObjectObs$:BehaviorSubject<object>;
 
     constructor() {
         this.initialize();
@@ -28,13 +32,18 @@ export class ProductStateService {
         this._productsResponse = {};
         this._orderSummary = {};
         this._isLoading=false;
+        this._cartProducts=[],
+        this._deliveryAddress={};
+        this._filterObj={};
 
 
         this.productResponseObs$ = new BehaviorSubject<Object>(this._productsResponse);
         this.productDetailObs$ = new BehaviorSubject<Object>(this._productDetailResponse);
         this.orderSummaryObs$ = new BehaviorSubject<object>(this._orderSummary);
         this.isLoadingObs$= new BehaviorSubject<boolean>(this._isLoading);
-
+        this.cartProductObs$= new BehaviorSubject<Array<object>>(this._cartProducts);
+        this.deliveryAddressObs$ = new BehaviorSubject<object>(this._deliveryAddress);
+        this.filterObjectObs$ = new BehaviorSubject<object>(this._filterObj);
 
     }
 
@@ -74,5 +83,32 @@ export class ProductStateService {
         this.isLoadingObs$.next(this._isLoading);
     }
 
+    
+    public get cartProductState() {
+        return this._cartProducts;
+    }
+
+    public set cartProductState(response) {
+        this._cartProducts = response;
+        this.cartProductObs$.next(this._cartProducts);
+    }
+
+    public get deliveryAddressState() {
+        return this._deliveryAddress;
+    }
+
+    public set deliveryAddressState(response) {
+        this._deliveryAddress = response;
+        this.deliveryAddressObs$.next(this._deliveryAddress);
+    }
+
+    public get filterObjectState() {    
+        return this._filterObj;
+    }
+
+    public set filterObjectState(response) {
+        this._filterObj = response;
+        this.filterObjectObs$.next(this._filterObj);
+    } 
 
 }

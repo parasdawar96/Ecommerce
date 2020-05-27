@@ -1,13 +1,13 @@
-<div class="address-container">
-    <div *ngIf="addressList" class="address-content">
+<div *ngIf="addressList" class="address-container">
+    <div *ngIf="addressList.length" class="address-content">
         <div class="address-heading">
             <span>SELECT DELIVERY ADDRESS</span>
             <span><button (click)="addAddress()">+Add address</button></span>
         </div>
         <ul class="address-container">
-            <li *ngFor="let item of addressList" class="address-item">
+            <li *ngFor="let item of addressList; let i = index" class="address-item">
                 <div>
-                    <input type="radio">
+                    <input id="radio-button-{{item.id}}" [value]='item.id'  (ngModelChange)="selectAddress($event,item)" [(ngModel)]="radioButtonValues[i]" type="radio">
                 </div>
                 <div>
                     <div class="address-item-username">
@@ -28,6 +28,86 @@
                 </div>
             </li>
         </ul>
+    </div>
+    <div *ngIf="!addressList.length">
+        <h4>ADD ADDRESS</h4>
+        <div style="border:none" class="new-address-container">
+            <div class="new-address-content">
+                <form  #addressForm="ngForm"
+                    (ngSubmit)="addressForm.valid && onSubmit(addressForm)">
+                    <div class="contact-info">
+                        <span class="contact-info-heading" >Contact Details</span>
+                        <div class="contact-info-inputBox">
+                                        
+                            <input autocomplete="off" required type="text" #name="ngModel" [(ngModel)]="addModel.name"
+                            name="name" >
+                            <label> Name<span class="asterisk">*</span> </label>       
+                        </div>
+                        <div class="error_element" *ngIf="addressForm.submitted &&  !name.valid">
+                            <label  class="validation-message"> This field is required.</label>
+                        </div>
+                        <!-- <div class="error_element" *ngIf="addressForm.submitted &&  !password.valid">
+                            <label *ngIf="password.errors?.required" class="validation-message">This field is required.</label>
+                            <label *ngIf="password.errors?.minlength"  class="validation-message">Enter atleast 6 characters.</label>
+                        </div> -->
+                        <div class="contact-info-inputBox">
+                                      
+                            <input autocomplete="off" [pattern]=
+                            "'[1-9][0-9]{9}'" maxlength="10"  required type="text" #mobile="ngModel" [(ngModel)]="addModel.mobile"
+                            name="mobile" >
+                            <label> Mobile No<span class="asterisk">*</span> </label>          
+                        </div>
+                        <div class="error_element" *ngIf="addressForm.submitted &&  !mobile.valid">
+                            <label *ngIf="mobile.errors?.required" class="validation-message">This field is required.</label>
+                            <label *ngIf="mobile.errors?.pattern"  class="validation-message">Mobile no. should have 10 digits.</label>
+                        </div>
+                    </div>
+                    <div class="address-info">
+                        <span class="address-info-heading" >Address</span>
+                        <div class="address-info-inputBox">
+                                                
+                            <input autocomplete="off" required maxlength="6" [pattern]="'^[1-9][0-9]{5}$'" type="text" #pincode="ngModel" [(ngModel)]="addModel.pincode"
+                            name="pincode" >
+                            <label> Pin Code<span class="asterisk">*</span> </label>
+                        </div>
+                        <div class="error_element" *ngIf="addressForm.submitted &&  !pincode.valid">
+                            <label *ngIf="pincode.errors?.required" class="validation-message">This field is required.</label>
+                            <label *ngIf="pincode.errors?.pattern"  class="validation-message">Pincode should have 6 digits.</label>
+                        </div>
+                        <div class="address-info-inputBox" >
+                                            
+                            <input autocomplete="off" required 
+                            type="text" #address="ngModel" [(ngModel)]="addModel.address"
+                            name="address" >
+                            <label> Address<span class="asterisk">*</span> </label>   
+                        </div>
+                        <div class="error_element" *ngIf="addressForm.submitted &&  !address.valid">
+                            <label  class="validation-message"> This field is required.</label>
+                        </div>
+                        <div class="address-info-inputBox">
+                                  
+                            <input autocomplete="off" required type="text" #locality="ngModel" [(ngModel)]="addModel.locality"
+                            name="locality" >
+                            <label> Locality/Town<span class="asterisk">*</span> </label>          
+                        </div>
+                        <div class="error_element" *ngIf="addressForm.submitted &&  !locality.valid">
+                            <label  class="validation-message"> This field is required.</label>
+                        </div>
+                        <div class="address-info-locationBox"> 
+                            <input autocomplete="off"  type="text"  #city="ngModel" [(ngModel)]="addModel.city"
+                            name="city" placeholder="City">
+                            <input autocomplete="off"  type="text"  #state="ngModel" [(ngModel)]="addModel.state"
+                            name="state" placeholder="State">
+                        </div>
+                      
+                    </div>
+                    <div class="submit-button">
+                        <input type="submit" value="Submit"> 
+                    </div>
+              
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 

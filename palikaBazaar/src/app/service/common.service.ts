@@ -10,6 +10,7 @@ import { User } from '../shared/user.model';
 export class CommonService implements OnInit, OnDestroy {
     queryParam: any = "";
     routeSub: any;
+    filterObj:{};
 
     selectedUser: User = {
         name: '',
@@ -101,33 +102,7 @@ export class CommonService implements OnInit, OnDestroy {
             this.productService.productDetailState = response;
         });
     }
-
-    setFilter(selectedFilter, oldFilter: string) {
-        let updatedFilter = "";
-        let selectedFilterArray = selectedFilter.split(":");
-        if (oldFilter) {
-            if (oldFilter.includes(selectedFilterArray[0])) {
-                let oldSubFilterArray = oldFilter.split("::");
-                oldSubFilterArray = oldSubFilterArray.map(filterElem => {
-                    if (filterElem.includes(selectedFilterArray[0])) {
-                        let filterElemArray = filterElem.split(":");
-                        filterElemArray[1] += "," + selectedFilterArray[1];
-                        filterElem = filterElemArray.join(":");
-                    }
-                    return filterElem;
-                });
-                updatedFilter = oldSubFilterArray.join("::");
-            }
-            else {
-                updatedFilter = oldFilter + "::" + selectedFilter;
-            }
-
-        }
-        else {
-            updatedFilter = selectedFilter;
-        }
-        return updatedFilter;
-    }
+    
     fetchProducts(finalQueryParam) {
 
         this.apiService.getProducts(finalQueryParam).subscribe(response => {

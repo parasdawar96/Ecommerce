@@ -55,13 +55,13 @@
                     </button>
                     <button (click)="goToBag($event)" *ngIf="cartButtonClicked" class="product-detail_content_addToBag_button" >
                         <span  class="product-detail_content_addToBag_button_content">
-                            <span>Go To Bag</span>
+                            <span style="padding-right:0.8rem">Go To Bag</span>
                             <a><img src="../../../assets/img/right-arrow.svg"></a>
                             
                         </span>
                     </button>
                     <div [hidden]="!addProductError" class="sizeError" >
-                        Product Already Added
+                        Product Already Added 
                     </div>
                 
                 </div>

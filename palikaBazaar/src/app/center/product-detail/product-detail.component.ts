@@ -133,8 +133,8 @@ export class ProductDetailComponent implements OnInit {
     setCartProductsFromDb(product){
         let body:any={};
         body.product=product;
-        this.apiService.addToCart(this.commonService.getUserPayload()._id, body).subscribe(response=>{
-            var a= response;
+        this.apiService.addToCart(this.commonService.getUserPayload()._id, body).subscribe((response:any)=>{
+            this.productService.cartProductState = response;
         },err=>{
             if(err.status==400){
                 this.cartButtonClicked=true; 
@@ -151,6 +151,7 @@ export class ProductDetailComponent implements OnInit {
         let cartProductsArray = this.commonService.getCartProductsToken();
         if (this.isCartNotHavingSameSizeProduct(cartProductsArray,product)) {
             cartProductsArray.push(product);
+            this.productService.cartProductState = cartProductsArray;
             this.commonService.setCartproductsToken(cartProductsArray);
             this.setCartSummary();
         }

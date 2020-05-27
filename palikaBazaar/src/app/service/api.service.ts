@@ -67,4 +67,8 @@ export class ApiService {
         return this.http.get(environment.apiBaseUrl+ "/account/fetchAddress/"+id,authHttpOptions);
     }
 
+    purchase(body){
+        return this.http.post(environment.apiBaseUrl+'/purchase',body,authHttpOptions);
+    }
+
 }

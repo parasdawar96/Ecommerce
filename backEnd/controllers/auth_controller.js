@@ -69,7 +69,6 @@ module.exports={
         console.log("inside add address");
         let id= req.params.id;
         let addressObj= req.body.address;
-
         User.updateOne({_id:id},{$push:{"address":{$each:[addressObj]}}},(err,data)=>{
             if("err in update address",err);
             else{
