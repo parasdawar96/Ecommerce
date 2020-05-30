@@ -43,6 +43,7 @@ app.use('/account', routes);
 app.use('/cart', cartRoutes);
 //app.get('/cart/:id',cartCtrl.fetchCart);
 app.post('/purchase',jwtVerification.verifyJwtToken,orderCtrl.purchase);
+app.post('/updateOrder',orderCtrl.updateOrder);
 app.get('/products', products_controller.readAllProducts);
 app.get('/product-details/:id', products_controller.readProduct);
 app.post('/products', admin_controller.addProduct);

@@ -16,6 +16,9 @@ export class CartComponent implements OnInit {
     private productStateService:ProductStateService) { }
 
   ngOnInit(): void {
+    this.productStateService.cartProductObs$.subscribe(data=>{
+        this.cartProducts=data;
+    });
     if (this.commonService.isLoggedIn()) {
         let body: any = {};
         body.products = this.commonService.getCartProductsToken();

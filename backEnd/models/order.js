@@ -9,7 +9,6 @@ const order = new Schema({
     razorpay_order_id:String,
     razorpay_payment_id:String,
     razorpay_signature:String,
-    order_id:String,
     purchase_date:Date,
     status:String,
     receipt:String,

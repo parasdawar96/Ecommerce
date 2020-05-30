@@ -3,12 +3,36 @@
         <bread-crumb></bread-crumb>
     </div>
     <div  class="main-section row">
-        <div class="filter-section col-sm-2">
+        <div class="filter-section col-md-2">
             <filters></filters>
         </div>
-        <div class="product-section col-sm-10">
+        <div class="product-section  col-md-10">
             <div class="sort-section">
                 <sort></sort>
+            </div>
+            <div class="responsive-filters">
+                <h5 class="responsive-filters-heading">Mens Clothing (7)</h5>
+                <div class="responsive-content">
+                    <div (click)="toggleMobileSort($event)" class="responsive-content-sort">
+                        SORT
+                        <img src="../../../assets/img/sort.svg">
+                        
+                        <div  id="mobile-sort-menu" class="sort-menu">
+                            <ul class="sort-menu-list" *ngIf="mobileSortList">
+                                <li class="sort-menu-list-item" (click)="updateSort(item)" *ngFor="let item of mobileSortList">
+                                    {{item.viewValue}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="responsive-content-filter">
+                        Filter
+                        <img src="../../../assets/img/filter.svg">
+                        
+                    </div>
+                </div>
+            
             </div>
             <div class="product-content">
                 <products></products>

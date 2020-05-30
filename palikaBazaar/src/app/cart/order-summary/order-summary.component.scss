@@ -43,15 +43,20 @@
 
         &-button{
             
-            button{
+            .button{
             width: 100%;
             padding:0.5rem;
             font-weight: 500;
             font-size: 1.2rem;
-            background-color: #686868;
+            background-color: #000;
+    
             color: #fff;
             border: none;
             margin: 1rem 0;
+            }
+
+            .button:hover{
+                background-color: #282828;
             }
         }
     
@@ -60,4 +65,16 @@
 
 .green{
     color:#6fba31;
+}
+
+
+
+@media screen and (min-width: 769px) and (max-width: 1080px) {
+
+    .order-container{
+        padding: 4rem 0;
+    }
+    .order-content{
+        padding:0.5rem;
+    }
 }

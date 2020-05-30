@@ -6,7 +6,7 @@
     display: inline-block;
      margin-bottom: 20px;
      width: 80% !important;
-     height: 80vh !important;
+     height: 35rem !important;
      margin: 0 auto;
  }
 
@@ -17,8 +17,8 @@
         flex-direction: row;
        &_big_container{
         img{
-            width: 500px;
-            height: 610px;
+            width: 31rem;
+            height: 38rem;
         }
        }
        &_small_container{
@@ -27,8 +27,8 @@
         padding: 1rem 3rem;
         &__others{
             img{
-                width: 118px;
-                height: 140px;
+                width: 7.4rem;
+                height: 8.75px;
             }
         }
     }
@@ -83,12 +83,11 @@
         &_sizeButton{
             button{
                 border: 1px solid #a1a4a4;
-                border-radius: 50px;
+                border-radius: 3.1rem;
                 padding: 0;
-                min-width: 50px;
-                height: 50px;
+                min-width: 3.1rem;
+                height: 3.1rem;
                 background-color: #fff;
-
                 text-align: center;
                 cursor: pointer;
                 color: #282c3f;
@@ -120,7 +119,7 @@
                 border-radius: 3px;
                 padding: 0.5rem 1rem;
                 border: 0;
-                width: 42%;
+               
                 cursor: pointer;
 
                 &:hover{
@@ -133,6 +132,7 @@
                     font-weight: 500;
                     color: #fff;
                     display: flex;;
+                    justify-content: center;
                 }
                 img{
                     width: 1rem;
@@ -180,3 +180,9 @@
 .sizeError{
     color: red;
 }
+
+@media screen and (max-width: 768px) {
+    .product-detail_content_addToBag_button{
+        width: 100%;
+    }
+  } 

@@ -5,36 +5,26 @@ import { ApiService } from '../service/api.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  queryParam;
-  constructor(private commonService:CommonService,private productService:ProductStateService,private apiService:ApiService,private router:Router) {
-        // this.productService.queryParamObs$.subscribe(data=>{
-        //     this.queryParam=data;
-        // });
-   }
+    queryParam;
+    constructor(private commonService: CommonService, private productService: ProductStateService, private apiService: ApiService, private router: Router) {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  
-//   fetchProducts(event,query){
-//       let queryArray=query.split("=");
-//       this.router.navigate(['/products'], { queryParams: { gender: 'men'} });
-//     var obj={
-//         "key":queryArray[0],
-//         "value":queryArray[1]
-//     };
-//     this.queryParam=this.commonService.setQueryParam(obj);
-//     this.apiService.getProducts("http://localhost:3001",this.queryParam).subscribe(response=>{
-//         this.productService.productsResponseState=response;
-//     })
-//   }
+    openHamMenu() {
+        let hamElem = document.getElementById("ham-menu");
+        hamElem.style.display = "block";
+    }
 
-
-
+    closeHamMenu(){
+        let hamElem = document.getElementById("ham-menu");
+        hamElem.style.display = "none";
+    }
 
 }

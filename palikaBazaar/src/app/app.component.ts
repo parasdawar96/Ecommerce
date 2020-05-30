@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { ProductStateService } from './service/product-state.service';
+import {fader} from './route-animations';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    styleUrls: ['./app.component.scss'],
+    animations:[
+        fader
+    ]
 })
 export class AppComponent implements OnInit {
     title = 'palikaBazaar';
@@ -15,6 +19,10 @@ export class AppComponent implements OnInit {
         this.productService.isLoadingObs$.subscribe(res=>{
             this.isLoading=res;
         });
+    }
+
+    prepareRoute(outlet :RouterOutlet){
+        return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animations'];
     }
 
 }

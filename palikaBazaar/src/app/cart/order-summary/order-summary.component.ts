@@ -28,31 +28,35 @@ export class OrderSummaryComponent implements OnInit {
         }
 
     };;
+    static apiService:ApiService;
+
     constructor(private commonService: CommonService,
         private apiService: ApiService,
         private router: Router,
         private toastr: ToastrService,
         private productStateService: ProductStateService,
         private activatedRoute: ActivatedRoute,
-        private location: Location) { }
+        private location: Location) {
+            OrderSummaryComponent.apiService = this.apiService;
+         }
 
     ngOnInit(): void {
         this.productStateService.orderSummaryObs$.subscribe(response => this.cartSummary = response);
         this.productStateService.deliveryAddressObs$.subscribe(response => this.deliveryAddress = response);
-        let inCart= sessionStorage.getItem("inCart");
-        if(inCart){
-            this.inCart=inCart=="true";
+        let inCart = sessionStorage.getItem("inCart");
+        if (inCart) {
+            this.inCart = inCart == "true";
         }
         this.location.onUrlChange(url => {
             console.log("inside location url ", url);
             if (this.commonService.isLoggedIn()) {
                 if (url.includes("bag")) {
                     this.inCart = true;
-                    sessionStorage.setItem("inCart","true");
+                    sessionStorage.setItem("inCart", "true");
                 }
                 else if (url.includes("address")) {
                     this.inCart = false;
-                    sessionStorage.setItem("inCart","false");
+                    sessionStorage.setItem("inCart", "false");
                 }
             }
         });
@@ -103,18 +107,17 @@ export class OrderSummaryComponent implements OnInit {
 
         this.apiService.purchase(body).subscribe((response: any) => {
             let payload = response.payload;
-            if (payload["key"] && payload["dbRes"]["order_id"]) {
+            if (payload["key"] && payload["dbRes"]["razorpay_order_id"]) {
                 let dbRes = payload["dbRes"];
                 this.razorPayOptions.key = payload["key"];
-                this.razorPayOptions.order_id = dbRes["order_id"];
+                this.razorPayOptions.order_id = dbRes["razorpay_order_id"];
                 this.razorPayOptions.amount = dbRes["amount"];
                 this.razorPayOptions.handler = this.razorPayResponseHandler;
                 console.log("razorpay options", this.razorPayOptions);
-
+                sessionStorage.setItem("orderId", dbRes["_id"]);
                 var rzp1 = new Razorpay(this.razorPayOptions);
                 rzp1.open();
                 console.log("opened");
-
             }
 
         }, err => {
@@ -125,15 +128,19 @@ export class OrderSummaryComponent implements OnInit {
 
     razorPayResponseHandler(response) {
         console.log("final response", response);
-        // let paymentObject= {
-        //   _id:sess._id,
-        //   payment:response,
-        //   user_name:sess.user_email,
-        //   amount: sess.amount,
-        //   recipient_email:sess.recipient_email,
-        //   user_email:sess.user_name,
-        // }
-        // console.log("payment object ",paymentObject)
+        let orderId = sessionStorage.getItem("orderId");
+
+        let paymentObject = {
+            _id: orderId,
+            payment: response
+        }
+        console.log("payment object ", paymentObject);
+        OrderSummaryComponent.apiService.updateOrder(paymentObject).subscribe(response => {
+            console.log(response);
+        },
+            err => {
+                console.log(err);
+            })
         // BuyGiftCardComponent.API_SERVICE.http_put(CommonURL.URL_PURCHASE_GIFT_CARD_SUCCESS,paymentObject).subscribe(success=>{
         //   console.log("success");
         //   alert("payment success send to success page");

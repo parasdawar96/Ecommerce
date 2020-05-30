@@ -25,10 +25,10 @@
             <span>Rs{{cartSummary.payable}}</span>
         </div>
         <div class="order-content-button">
-            <button *ngIf="!loggedIn" (click)="setPreviousRoute()" [routerLink]="'/account/login'" >Login First</button>
+            <button  class="button" *ngIf="!loggedIn" (click)="setPreviousRoute()" [routerLink]="'/account/login'" >Login First</button>
             <span *ngIf="loggedIn ">
-                <button   *ngIf="inCart" (click)="goToAddress()" [routerLink]="'/cart/address'" >Select Delivery Address</button>
-                <button  *ngIf="!inCart" (click)="checkSelectedAddress()" >Place Order</button>
+                <button class="button"  *ngIf="inCart" (click)="goToAddress()" [routerLink]="'/cart/address'" >Select Delivery Address</button>
+                <button class="button"  *ngIf="!inCart" (click)="checkSelectedAddress()" >Place Order</button>
             </span>
 
             <!-- [routerLink]="'/cart/checkout'" -->

@@ -1,15 +1,15 @@
 <div style="position: relative;">
     <div class="header-logo">
-        PALIKA BAZAAR
+        <img style="height: 5rem;width :7.5rem" src="../../assets/img/palikaBazaar.png">
     </div>
     <div *ngIf="cartProducts" class="container cart-container">
         <div [hidden]="!cartProducts.length" class="row">
-            <div style="position: static;" class="col-sm-8">
+            <div style="position: static;" class="col-sm-12 col-md-8  ">
                 <!-- <app-bag></app-bag> -->
                 <!-- <app-address></app-address> -->
                 <router-outlet></router-outlet>
             </div>
-            <div class="col-sm-4 order-container">
+            <div class=" col-sm-12 col-md-4 order-container">
                 <order-summary></order-summary>
             </div>
         </div>

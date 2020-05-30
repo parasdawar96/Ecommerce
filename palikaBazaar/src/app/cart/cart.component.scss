@@ -79,3 +79,25 @@
         
     }
 }
+
+
+
+
+
+
+@media screen and (max-width: 1080px) {
+
+    .cart-container{
+        width:100% ;
+    }
+    
+}
+
+
+@media screen and (min-width: 1081px) and (max-width: 1350px) {
+
+    .cart-container{
+        width:90% ;
+    }
+    
+}

@@ -70,5 +70,9 @@ export class ApiService {
     purchase(body){
         return this.http.post(environment.apiBaseUrl+'/purchase',body,authHttpOptions);
     }
+    updateOrder(body){
+        return this.http.post(environment.apiBaseUrl+'/updateOrder',body,httpOptions);
+    }
+    
 
 }

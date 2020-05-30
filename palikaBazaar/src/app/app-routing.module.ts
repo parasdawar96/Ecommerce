@@ -15,7 +15,7 @@ const appRoutes: Routes = [
     {
         path: '', component: CenterComponent,
         children: [
-            { path: 'home', component: HomePageComponent },
+            { path: 'home', component: HomePageComponent},
             { path: 'products', component: ProductMainComponent },
             { path: 'product-details/:id', component: ProductDetailComponent },
             { path: 'account/signup', component: SignUpComponent },

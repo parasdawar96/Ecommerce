@@ -1,11 +1,11 @@
+.header-section{
+    height: 5rem
+}
 
-.main-container{
-    padding: 1rem;
-    background-color: #fcfcfc;
-    .filter-section{
-        padding-right: 0;
-    }
-    .product-section{
-        padding-left: 0;
-    }
+@media screen and (max-width: 991px) {
+
+.header-section{
+    height: 4.4rem;
+}
+
 }
