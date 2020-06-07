@@ -1,8 +1,16 @@
 .header-logo{
     font-size: 2.5rem;
     display: flex;
-    padding: 0.5rem 2rem;
+    padding: 0.5rem;
     background-color: #f8f8f8;
+    .back-button-link{
+        display: none;
+        margin-right: 0.5rem;
+        img{
+            width: 2rem;
+            height: 2rem;
+        }
+    }
 }
 
 .footer-payment-info{
@@ -61,7 +69,7 @@
         &-button{
             margin-top: 0.5rem;
             button{
-                background: orange;
+                background: #ff4b72;
                 cursor:pointer;
                 color: #fff;
                 border: 1px solid ;
@@ -74,7 +82,7 @@
         }
         &-detail{
             font-size:1.2rem;
-            color: orange;
+            color: #ff4b72;
         }
         
     }
@@ -100,4 +108,11 @@
         width:90% ;
     }
     
+}
+
+
+@media screen and (max-width: 768px) {
+    .back-button-link{
+        display: block !important;
+    }
 }

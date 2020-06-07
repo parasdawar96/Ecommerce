@@ -1,17 +1,19 @@
+<!-- [hidden]="!productList && !productList.length"  -->
+
 <div class="main-container">
-    <div>
+    <div class="bread-section">
         <bread-crumb></bread-crumb>
     </div>
-    <div  class="main-section row">
+    <div   class="main-section row">
         <div class="filter-section col-md-2">
             <filters></filters>
         </div>
-        <div class="product-section  col-md-10">
+        <div class="product-section col-sm-12 col-md-10">
             <div class="sort-section">
                 <sort></sort>
             </div>
             <div class="responsive-filters">
-                <h5 class="responsive-filters-heading">Mens Clothing (7)</h5>
+                <h5 class="responsive-filters-heading">{{gender}} Clothing ({{productsCount}})</h5>
                 <div class="responsive-content">
                     <div (click)="toggleMobileSort($event)" class="responsive-content-sort">
                         SORT
@@ -26,11 +28,11 @@
                         </div>
                     </div>
 
-                    <div class="responsive-content-filter">
+                    <div (click)="toggleMobileFilter($event)" class="responsive-content-filter">
                         Filter
                         <img src="../../../assets/img/filter.svg">
-                        
                     </div>
+                  
                 </div>
             
             </div>
@@ -39,4 +41,13 @@
             </div>
         </div>
     </div>
+    
+</div>
+
+<!-- <div [hidden]="productList && productList.length " style="display: flex;justify-content: center;align-items: center;height: 100vh;font-weight: 700;font-size:2rem" >
+    No Products Found !!!
+</div> -->
+
+<div id="mobile-filter-menu" class="mobile-filter-menu">
+    <filters *ngIf="filterOpen"></filters>
 </div>

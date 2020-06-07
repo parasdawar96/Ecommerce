@@ -6,6 +6,37 @@
     }
 
 }
+.poster-content{
+    padding: 2rem 6rem;
+    display: flex;
+    flex-direction: row;
+    height: 90vh;
+    div{
+        width: 50%;
+        height: 100%;
+        img{
+            width: 100%;
+            height: 100%;
+            
+        }
+    }
+}
+.women-image-frame,.men-image-frame{
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    div{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        div{
+            width: 50%;
+            img{
+                width: 100%;
+            }
+        }
+    }
+}
 
 .new-arrivals{
     img{
@@ -49,3 +80,14 @@
 }
 
 .carousel-item {margin-right: auto !important;}
+
+
+@media screen and (max-width: 768px) {
+    .women-image-frame,.men-image-frame{
+        padding:1rem 0 0;
+    }
+    .poster-content{
+        padding:1rem 0;
+        height: 40vh;
+    }
+}

@@ -8,13 +8,19 @@ import { ProductStateService } from 'src/app/service/product-state.service';
 })
 export class BreadCrumbComponent implements OnInit {
 
-    breadCrumbList:object;
+    breadCrumbList:any;
+    gender:string="";
     constructor(private productService:ProductStateService) { }
   
     ngOnInit() {
   
       this.productService.productResponseObs$.subscribe((response:any)=>{
           this.breadCrumbList=response.breadCrumbList;
+          if(this.breadCrumbList!=undefined){
+            if(this.breadCrumbList.length)this.gender=this.breadCrumbList[0].text;
+            else this.gender="";
+          }
+      
       });
     }
 

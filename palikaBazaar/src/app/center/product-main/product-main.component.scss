@@ -1,12 +1,13 @@
 
 .main-container{
     padding: 1rem;
-    background-color: #fcfcfc;
+    //background-color: #fcfcfc;
     .filter-section{
         padding-right: 0;
     }
     .product-section{
         padding-left: 0;
+        position: static;
     }
 }
 
@@ -18,6 +19,7 @@
         font-size: 1.3rem;
         line-height: 30px;
         text-align: center;
+        text-transform: capitalize;
     }
     .responsive-content{
         display: flex;
@@ -56,12 +58,25 @@
 
         }
         &-filter{
-            border-left: 1px solid #787878;
-            img{
-                left:53%
-            }
+                border-left: 1px solid #787878;
+                img{
+                    left:53%
+                }
             }
     }
+}
+
+
+.mobile-filter-menu{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+}
+.bread-section{
+    display: block;
 }
 
 
@@ -74,5 +89,8 @@
     }
     .responsive-filters{
         display: block;
+    }
+    .bread-section{
+        display: none;
     }
   } 

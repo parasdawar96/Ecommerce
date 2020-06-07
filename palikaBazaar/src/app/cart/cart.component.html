@@ -1,5 +1,8 @@
 <div style="position: relative;">
     <div class="header-logo">
+        <a (click)="goBack()" id="back-button-link" class="back-button-link">
+            <img src="../../assets/img/back.svg">
+        </a>
         <img style="height: 5rem;width :7.5rem" src="../../assets/img/palikaBazaar.png">
     </div>
     <div *ngIf="cartProducts" class="container cart-container">
@@ -43,3 +46,5 @@
         </div>
     </div>
 </div>
+
+

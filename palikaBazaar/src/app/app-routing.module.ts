@@ -10,6 +10,7 @@ import { LoginComponent } from './user/login/login.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ProfileComponent } from './user/profile/profile.component';
 import { ProductMainComponent } from './center/product-main/product-main.component';
+import { SuccessComponent } from './success/success.component';
 
 const appRoutes: Routes = [
     {
@@ -21,10 +22,10 @@ const appRoutes: Routes = [
             { path: 'account/signup', component: SignUpComponent },
             { path: 'account/login', component: LoginComponent },
             { path: 'account/profile', component: ProfileComponent, canActivate: [AuthGuard] },
-            { path: '', redirectTo: '/home', pathMatch: 'full' }
+            { path: '', redirectTo: '/home', pathMatch: 'full' },
+            {path: 'success', component: SuccessComponent,pathMatch: 'full'}
         ]
     },
-    
     {
         path: 'cart', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule)
     }

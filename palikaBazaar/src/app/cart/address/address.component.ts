@@ -90,6 +90,6 @@ export class AddressComponent implements OnInit {
     selectAddress(event, item) {
         this.selectedAddress = item;
         this.productService.deliveryAddressState = this.selectedAddress;
-        localStorage.setItem("deliveryAddress", JSON.stringify(this.selectAddress));
+        localStorage.setItem("deliveryAddress", JSON.stringify(this.selectedAddress));
     }
 }

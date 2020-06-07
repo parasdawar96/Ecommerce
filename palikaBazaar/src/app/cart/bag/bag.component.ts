@@ -10,12 +10,14 @@ import { ProductStateService } from 'src/app/service/product-state.service';
 })
 export class BagComponent implements OnInit {
     cartProducts: any;
+    backendHost="http://localhost:3001";
     constructor(private commonService: CommonService, private apiService: ApiService, private productStateService: ProductStateService) { }
 
     ngOnInit(): void {
         this.productStateService.cartProductObs$.subscribe(data=>{
-            this.cartProducts=data;
+                this.cartProducts=data;
         });
+
 
     }
 

@@ -12,6 +12,7 @@
         &__listItem{
             &__link{
                 color:#b5b5b5;
+                text-transform: uppercase;
                 &:hover{
                     color:#000;
                     font-weight: 400;
@@ -22,6 +23,9 @@
                 margin:0 0.5rem;
                 content: "/";
             }   
+            &:last-child::after{
+                content: "";
+            }
         }
 
     }

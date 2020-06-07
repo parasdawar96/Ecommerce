@@ -37,6 +37,7 @@ import {MatInputModule} from '@angular/material/input';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { ToastrModule } from 'ngx-toastr';
+import { SuccessComponent } from './success/success.component';
 
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
@@ -60,7 +61,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     SignUpComponent,
     ProfileComponent,
     ProductMainComponent,
-
+    SuccessComponent
 
 
   ],

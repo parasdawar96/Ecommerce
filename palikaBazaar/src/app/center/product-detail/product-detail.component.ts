@@ -23,10 +23,15 @@ export class ProductDetailComponent implements OnInit {
     selectedSize: any;
     selectSizeError: Boolean;
     cartButtonClicked: boolean;
-    addProductError:boolean;
-    addedSizeList:Array<string>;
+    addProductError: boolean;
+    addedSizeList: Array<string>;
     objectKeys = Object.keys;
-    constructor(private commonService: CommonService,private apiService:ApiService, private productService: ProductStateService, private router: Router, private activatedRoute: ActivatedRoute, private toastr: ToastrService) {
+    constructor(private commonService: CommonService,
+        private apiService: ApiService,
+        private productService: ProductStateService,
+        private router: Router,
+        private activatedRoute: ActivatedRoute,
+        private toastr: ToastrService) {
 
 
 
@@ -34,8 +39,8 @@ export class ProductDetailComponent implements OnInit {
 
     ngOnInit(): void {
         this.selectSizeError = false;
-        this.addProductError= false;
-        this.addedSizeList=[];
+        this.addProductError = false;
+        this.addedSizeList = [];
         this.activatedRoute.params.subscribe(params => {
             let id = params['id'];
             this.commonService.fetchSingleProduct(id);
@@ -45,9 +50,27 @@ export class ProductDetailComponent implements OnInit {
             if (response) {
                 this.productObj = response;
                 this.sizeList = this.productObj.size;
+                let picture="http://localhost:3001"+ this.productObj.picture;
+                this.galleryImages = [
+                    {
+                        small: picture,
+                        medium: picture,
+                        big: picture
+                    },
+                    {
+                        small: picture,
+                        medium: picture,
+                        big:picture
+                    },
+                    {
+                        small: picture,
+                        medium: picture,
+                        big: picture
+                    }
+                ];
             }
 
-        })
+        });
 
         this.galleryOptions = [
             {
@@ -77,33 +100,17 @@ export class ProductDetailComponent implements OnInit {
             }
         ];
 
-        this.galleryImages = [
-            {
-                small: 'assets/img/myntra_shirt1.png',
-                medium: 'assets/img/myntra_shirt1.png',
-                big: 'assets/img/myntra_shirt1.png'
-            },
-            {
-                small: 'assets/img/myntra_shirt1.png',
-                medium: 'assets/img/myntra_shirt1.png',
-                big: 'assets/img/myntra_shirt1.png'
-            },
-            {
-                small: 'assets/img/myntra_shirt1.png',
-                medium: 'assets/img/myntra_shirt1.png',
-                big: 'assets/img/myntra_shirt1.png'
-            }
-        ];
+
     }
 
     setSelectedSize(event, sizeItem) {
         if (this.selectedSize) document.getElementById("size-" + this.selectedSize).classList.remove("selectedButton");
         this.selectedSize = sizeItem;
-        if(this.addedSizeList.includes(this.selectedSize)){
-            this.cartButtonClicked=true;      
+        if (this.addedSizeList.includes(this.selectedSize)) {
+            this.cartButtonClicked = true;
         }
-        else{
-            this.cartButtonClicked = false;  
+        else {
+            this.cartButtonClicked = false;
         }
         this.selectSizeError = false;
         event.currentTarget.classList.add("selectedButton");
@@ -117,11 +124,11 @@ export class ProductDetailComponent implements OnInit {
             this.cartButtonClicked = true;
             let product = JSON.parse(JSON.stringify(this.productObj));
             product.size = this.selectedSize;
-            if(!this.addedSizeList.includes(this.selectedSize))this.addedSizeList.push(this.selectedSize);
-            if(this.commonService.isLoggedIn()){
+            if (!this.addedSizeList.includes(this.selectedSize)) this.addedSizeList.push(this.selectedSize);
+            if (this.commonService.isLoggedIn()) {
                 this.setCartProductsFromDb(product);
             }
-            else{
+            else {
                 this.setCartproductsfromSession(product);
             }
         }
@@ -130,18 +137,18 @@ export class ProductDetailComponent implements OnInit {
         }
 
     }
-    setCartProductsFromDb(product){
-        let body:any={};
-        body.product=product;
-        this.apiService.addToCart(this.commonService.getUserPayload()._id, body).subscribe((response:any)=>{
+    setCartProductsFromDb(product) {
+        let body: any = {};
+        body.product = product;
+        this.apiService.addToCart(this.commonService.getUserPayload()._id, body).subscribe((response: any) => {
             this.productService.cartProductState = response;
-        },err=>{
-            if(err.status==400){
-                this.cartButtonClicked=true; 
+        }, err => {
+            if (err.status == 400) {
+                this.cartButtonClicked = true;
                 this.toastr.error('Product Already Added', 'Error', {
                     timeOut: 3000,
                     extendedTimeOut: 3000,
-                    positionClass:'toast-bottom-center'
+                    positionClass: 'toast-bottom-center'
                 });
             }
         });
@@ -149,20 +156,20 @@ export class ProductDetailComponent implements OnInit {
 
     setCartproductsfromSession(product) {
         let cartProductsArray = this.commonService.getCartProductsToken();
-        if (this.isCartNotHavingSameSizeProduct(cartProductsArray,product)) {
+        if (this.isCartNotHavingSameSizeProduct(cartProductsArray, product)) {
             cartProductsArray.push(product);
             this.productService.cartProductState = cartProductsArray;
             this.commonService.setCartproductsToken(cartProductsArray);
             this.setCartSummary();
         }
-        else{
-            this.cartButtonClicked=true; 
+        else {
+            this.cartButtonClicked = true;
             this.toastr.error('Product Already Added', 'Error', {
                 timeOut: 3000,
                 extendedTimeOut: 3000,
-                positionClass:'toast-bottom-center'
+                positionClass: 'toast-bottom-center'
             });
-        
+
         }
     }
     setCartSummary() {
@@ -175,14 +182,15 @@ export class ProductDetailComponent implements OnInit {
         this.commonService.setCartSummaryToken(cartSummaryObject);
     }
 
-    isCartNotHavingSameSizeProduct(cartProductsArray,productObj){
-        const query = (element) => (element._id!=productObj._id) ||(element._id==productObj._id && productObj.size!=element.size);
-        let val=cartProductsArray.every(query);
+    isCartNotHavingSameSizeProduct(cartProductsArray, productObj) {
+        const query = (element) => (element._id != productObj._id) || (element._id == productObj._id && productObj.size != element.size);
+        let val = cartProductsArray.every(query);
         return val;
     }
 
     goToBag(ev) {
         this.cartButtonClicked = false;
+
         this.router.navigateByUrl("/cart/bag");
     }
 

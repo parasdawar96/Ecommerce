@@ -51,7 +51,7 @@
 
 
 .footer-social{
-    background-color: #f8f8f8;
+    background-color: #f3f3f3;
     &__content{
         display: flex;
         justify-content: space-evenly;
@@ -82,17 +82,54 @@
         }
 
         .icons{
-            ul{
-                display: flex;
-                li{
-                    padding-bottom: none;
-                    padding-right: 0.8rem;
-                }        
-                img{
-                    width: 1.45rem;
-                    height: 1.45rem;
+            display: flex;
+            flex-direction: column;
+            div{
+                span{
+                    margin:0 0 0.3rem;
+                    padding: 0;
+                }
+                form{
+                    height: 2.5rem;
+                    input{
+                        height: 100%;
+                        padding: 0.3rem;
+                    }
+                    input[type=submit]{
+                        position: relative;
+                    }
+                    img{
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                    }
+                }
+                ul{
+                    display: flex;
+                    li{
+                        padding-bottom: none;
+                        padding-right: 0.8rem;
+                    }        
+                    img{
+                        width: 1.45rem;
+                        height: 1.45rem;
+                    }
                 }
             }
+            div:first-child{
+                margin-bottom: 1rem;
+            }
+            div:last-child{
+              
+                ul{
+                    padding: 0;
+                    margin: 0;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+            }
+           
         }
 
         
@@ -127,3 +164,31 @@
         }
     }
 }
+
+
+
+
+@media screen and (max-width: 991px) {
+    .footer-social{
+        &__content{
+            display: flex;
+            flex-direction: column;
+            padding: 1rem 0;
+            &__column{
+                width: 100%;
+                border-bottom: 1px solid #ccc;
+                padding: 0.5rem 0;
+            }
+            &__column:last-child{
+                border: 0;
+            }
+        }
+    }
+    .icons{
+        div{
+            ul{
+                justify-content: start !important;
+            }
+        }
+    }
+  } 

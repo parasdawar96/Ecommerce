@@ -67,6 +67,24 @@
     color:#6fba31;
 }
 
+.order-success{
+    &-content,&-address,&-mode{
+        margin-bottom: 1.5rem;
+        &-heading{
+            font-weight: 500;
+            color: #a1a4a4;
+        }
+    }
+    &-content{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .bold{
+        font-weight: 700;
+    }
+}
+
 
 
 @media screen and (min-width: 769px) and (max-width: 1080px) {

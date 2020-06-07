@@ -3,6 +3,7 @@ import { ProductStateService } from './product-state.service';
 import { ApiService } from './api.service';
 import { ActivatedRoute, Router, NavigationEnd, NavigationStart, RoutesRecognized } from '@angular/router';
 import { User } from '../shared/user.model';
+import { pairwise } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -19,11 +20,40 @@ export class CommonService implements OnInit, OnDestroy {
         confirmPassword: ''
     }
 
-    constructor(private apiService: ApiService, private productService: ProductStateService, private activatedRoute: ActivatedRoute, private router: Router) {
+    constructor(private apiService: ApiService,
+         private productService: ProductStateService, 
+         private activatedRoute: ActivatedRoute, private router: Router) {
+            router.events.pipe(
+                pairwise()
+            ).subscribe((event) =>{
+                //console.log("outside",event);
+                if (event[0] instanceof NavigationEnd && event[1] instanceof NavigationStart){
+                    console.log("url",event[1].url);
+                    console.log("old url",event[0].url);
+                    if(event[1].url.includes("product")||event[1].url.includes("cart")||event[1].url.includes("account")){
+                        this.productService.backButtonState=true;
+                    }
+                    else{
+                        console.log("back button false");
+                        this.productService.backButtonState=false;
+                    }
+                    if(!event[1].url.includes("account")){
+                        sessionStorage.setItem("previousRoute",event[1].url);
+                    }
+                    
+                }
+                window.scrollTo(0, 0);
+              
+            } );
+
 
     }
 
     ngOnInit(): void {
+       
+        // this.router.events.pairwise().subscribe((event) => {
+        //     console.log(event);
+        // });
     }
     ngOnDestroy() {
         this.routeSub.unsubscribe();
@@ -118,7 +148,8 @@ export class CommonService implements OnInit, OnDestroy {
         }
         return queryParam;
     }
-   
+
+
 
 
 

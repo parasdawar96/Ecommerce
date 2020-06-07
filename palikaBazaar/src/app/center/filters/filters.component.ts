@@ -17,6 +17,7 @@ export class FiltersComponent implements OnInit {
     filterObj: object;
     gender;
     sort;
+    selectedMobileFilter: string;
     constructor(private productService: ProductStateService, private router: Router, private commonService: CommonService, private apiService: ApiService, private activatedRoute: ActivatedRoute) { }
 
     ngOnInit() {
@@ -32,6 +33,12 @@ export class FiltersComponent implements OnInit {
             let list = response.filterObj;
             if (list != undefined) {
                 this.filterList = this.setFilters(list);
+                let selectedFilter= sessionStorage.getItem("selectedFilterItem");
+                if(selectedFilter){
+                    this.setSelectedFilter(selectedFilter);
+                }else{
+                    this.setSelectedFilter(Object.keys(this.filterList)[0]);
+                }
                 if (Object.keys(this.filterList).length) this.checkSelectedFilters();
             }
 
@@ -192,23 +199,45 @@ export class FiltersComponent implements OnInit {
                 });
         }
         else {
-            let queryParamObject: any = {};
-            if (this.gender) {
-                queryParamObject.gender = this.gender;
-            }
-            if (this.sort) {
-                queryParamObject.sort = this.sort;
-            }
-            this.router.navigate(
-                ['.'],
-                { relativeTo: this.activatedRoute, queryParams: queryParamObject }
-            );
+            this.clearFilters();
         }
 
 
 
         //this.router.navigateByUrl('/products?' + finalQueryParam);
 
+    }
+    clearFilters(){
+        let queryParamObject: any = {};
+        if (this.gender) {
+            queryParamObject.gender = this.gender;
+        }
+        if (this.sort) {
+            queryParamObject.sort = this.sort;
+        }
+        this.filterObj={};
+        this.productService.filterObjectState = this.filterObj;
+        this.router.navigate(
+            ['.'],
+            { relativeTo: this.activatedRoute, queryParams: queryParamObject }
+        );
+    }
+
+    setSelectedFilter(filterItem) {
+        this.selectedMobileFilter = filterItem;
+        sessionStorage.setItem("selectedFilterItem",filterItem);
+        setTimeout(()=>{
+            let elem=document.querySelector(".selectedFilter");
+            if(elem) elem.classList.remove("selectedFilter");
+            let selectedElem=document.querySelector("#filter-name-list-item-"+filterItem);
+            if(selectedElem) selectedElem.className+=" selectedFilter";
+        },0);
+    }
+
+
+    closeMobileFilter(){
+        let toggleMobileFilterElem=document.getElementById("mobile-filter-menu");
+        toggleMobileFilterElem.style.display="none";
     }
 
 }

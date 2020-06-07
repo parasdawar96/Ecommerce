@@ -5,28 +5,28 @@
 
 .products-content{
     font-size: 1rem;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 12.8rem);
     justify-content: space-between;
     list-style: none;
     &__item{
-        
-        margin: 0 1rem 2rem;
+        width: 12.5rem;
+        margin: 0 2rem 2rem 0;
         &__Link{
             cursor: pointer;
             &__Image{
                 img{
-                    width: 12.5rem;
+                    width: 100%;
                     height: 17.5rem;
                 }
             }
             &__details{
                  display: flex;
                 flex-direction: column;
-                padding: 0 1rem;
-                margin-top: 0.5rem;
+                padding: 0.3rem 1rem;
+               
                 text-align: left;
-                background-color: #fff;
+                background-color: #fcfcfc;
                 .product-brand{
                     font-weight: 500;
                     line-height: 1;
@@ -81,6 +81,8 @@
 
     .products-content{
         font-size: 1.2rem;
+        display: flex;
+        flex-wrap: wrap;
         &__item{
             margin: 0;
             width: 50%;

@@ -24,6 +24,7 @@ header{
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+        height: 80px;
     }
 
     .header-logo{
@@ -71,6 +72,7 @@ header{
     .header-search{
         margin-left: 4%;
        display: flex;
+       align-items: center;
         padding: 0.5rem 0;
         
         .header-search-input{
@@ -94,7 +96,23 @@ header{
     .header-actions{
         padding: 0 5px;
         display: flex;
+        flex-direction: row;
         margin-left: 2%;
+        .header-action-cart{
+            display: flex;
+            align-items: center;
+        }
+        .header-action-profile{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            &:hover{
+                border-bottom: 2px solid red;
+                .profile-menu{
+                    display: block;
+                }
+            }
+        }
         img{
             width: 1.4rem;
             height: 1.4rem;
@@ -169,6 +187,13 @@ header{
             height: 2rem;
         }
     }
+    .back-button-link{
+        display: none;
+        img{
+            width: 2rem;
+            height: 2rem;
+        }
+    }
 }
 .header-search-icon{
     display: none;
@@ -232,6 +257,79 @@ header{
     }
 }
 
+// .user-profile-icon{
+  
+//     &:hover{
+//         // .profile-menu{
+//         //     display: block;
+//         // }
+//     }
+// }
+
+.profile-menu{
+    display:none;
+    position: absolute;
+    top:80px;
+    right:2% ;
+    min-width: 15rem;
+    background-color: #fff;
+    box-shadow: 0 0 2px 0;
+    pointer-events: visible;
+    
+    .logged-out-div{
+        padding: 1rem;
+        h5{
+            display: flex;
+            justify-content: center;
+        }
+        a{
+            margin: 0;
+            color: #ff726f;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .logoutbutton{
+            display: flex;
+            justify-content: center;
+        }
+        &-links{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            
+          
+            span{
+                margin: 0 0.5rem;
+                color: #ff726f;
+            }
+        }
+    }
+    ul{
+        list-style: none;
+        font-size: 1rem;
+        margin: 0;
+        li{
+            min-height: 30px;
+            padding: 0 1rem;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            font-weight: 500;
+            color: #282828;
+            
+            a{
+                margin: 0;
+            }
+        }
+    }
+}
+
+.capitalize{
+    text-transform: capitalize;
+}
+
 
 @media screen and (max-width: 991px) {
     .responsive-nav{
@@ -254,6 +352,10 @@ header{
     }
     #toggler:checked + .hamburger-menu-backdrop{
         display: block !important;
+    }
+
+    .right-header{
+        height: 4.4rem;
     }
   } 
 

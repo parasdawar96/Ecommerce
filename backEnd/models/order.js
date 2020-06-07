@@ -12,6 +12,7 @@ const order = new Schema({
     purchase_date:Date,
     status:String,
     receipt:String,
+    user_email:String,
     userId:
         { type: Schema.Types.ObjectId, ref: 'User' }
 });

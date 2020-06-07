@@ -18,6 +18,7 @@ export class OrderSummaryComponent implements OnInit {
     deliveryAddress: object;
     inCart: boolean = true;
     inCheckOut: boolean = false;
+    orderSuccess:boolean=false;
     razorPayOptions: any = {
         key: "",
         order_id: "",
@@ -29,7 +30,7 @@ export class OrderSummaryComponent implements OnInit {
 
     };;
     static apiService:ApiService;
-
+    static router;
     constructor(private commonService: CommonService,
         private apiService: ApiService,
         private router: Router,
@@ -37,7 +38,9 @@ export class OrderSummaryComponent implements OnInit {
         private productStateService: ProductStateService,
         private activatedRoute: ActivatedRoute,
         private location: Location) {
+            (window as any).order=this;
             OrderSummaryComponent.apiService = this.apiService;
+            OrderSummaryComponent.router=this.router;
          }
 
     ngOnInit(): void {
@@ -46,6 +49,10 @@ export class OrderSummaryComponent implements OnInit {
         let inCart = sessionStorage.getItem("inCart");
         if (inCart) {
             this.inCart = inCart == "true";
+        }
+        let orderSuccess=localStorage.getItem("orderSuccess");
+        if (orderSuccess) {
+            this.orderSuccess = orderSuccess == "true";
         }
         this.location.onUrlChange(url => {
             console.log("inside location url ", url);
@@ -57,6 +64,10 @@ export class OrderSummaryComponent implements OnInit {
                 else if (url.includes("address")) {
                     this.inCart = false;
                     sessionStorage.setItem("inCart", "false");
+                }
+                else if(url.includes("success")){
+                    this.orderSuccess=true;
+                    localStorage.setItem("orderSuccess","true");
                 }
             }
         });
@@ -96,10 +107,12 @@ export class OrderSummaryComponent implements OnInit {
     }
 
     goToCheckOut() {
+        //this.router.navigateByUrl('/success');  
         // this.inCheckOut=true;
         // sessionStorage.setItem('inCheckOut','true');
         let body = {
             user_id: this.commonService.getUserPayload()._id,
+            user_email:this.commonService.getUserPayload().email,
             products: this.productStateService.cartProductState,
             purchase_amount: this.cartSummary.payable,
             address: this.productStateService.deliveryAddressState
@@ -109,10 +122,11 @@ export class OrderSummaryComponent implements OnInit {
             let payload = response.payload;
             if (payload["key"] && payload["dbRes"]["razorpay_order_id"]) {
                 let dbRes = payload["dbRes"];
+                localStorage.setItem("orderRes",JSON.stringify(dbRes));
                 this.razorPayOptions.key = payload["key"];
                 this.razorPayOptions.order_id = dbRes["razorpay_order_id"];
                 this.razorPayOptions.amount = dbRes["amount"];
-                this.razorPayOptions.handler = this.razorPayResponseHandler;
+                this.razorPayOptions.handler = this.razorPayResponseHandler.bind(this);
                 console.log("razorpay options", this.razorPayOptions);
                 sessionStorage.setItem("orderId", dbRes["_id"]);
                 var rzp1 = new Razorpay(this.razorPayOptions);
@@ -129,14 +143,18 @@ export class OrderSummaryComponent implements OnInit {
     razorPayResponseHandler(response) {
         console.log("final response", response);
         let orderId = sessionStorage.getItem("orderId");
-
         let paymentObject = {
             _id: orderId,
             payment: response
         }
         console.log("payment object ", paymentObject);
-        OrderSummaryComponent.apiService.updateOrder(paymentObject).subscribe(response => {
+        this.apiService.updateOrder(paymentObject).subscribe(response => {
             console.log(response);
+            this.router.navigateByUrl('/success');
+            setTimeout(()=>{
+                  window.location.reload();
+            });
+             
         },
             err => {
                 console.log(err);
