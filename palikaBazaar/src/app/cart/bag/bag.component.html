@@ -7,7 +7,7 @@
             <li *ngFor="let item of cartProducts">
                 <div class="product-details">
                     <a class="product-link">
-                        <img class="product-link-image" src="../../../assets/img/myntra_shirt1.png">
+                        <img class="product-link-image" src="{{backendHost}}{{item.picture}}">
                     </a>
                     <div class="product-content">
                         <div class="product-content-brand">

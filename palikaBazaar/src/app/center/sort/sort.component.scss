@@ -5,15 +5,16 @@
     justify-content: space-between;
     align-content: flex-start;
     border-bottom: 1px solid #aba9a9;
-    padding:0.6rem 1rem;
+    padding:0.45rem 1rem;
     margin: 0;
+    font-size: 1.2rem;
     
     &-content{
         
         &__Heading{
-            font-weight: 700;
+            font-weight: 500;
             padding-right: 0.7rem;
-            
+            text-transform: capitalize;
         }
         &__count{
             color:  #aba9a9;

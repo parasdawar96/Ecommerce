@@ -4,12 +4,11 @@
             <a class="bread-crumb__content__listItem__link" routerLink="/" >Home</a>
         </li>
         <li class="bread-crumb__content__listItem">
-            <a class="bread-crumb__content__listItem__link">Products</a>
+            <a class="bread-crumb__content__listItem__link" [routerLink]="'/products'" >Products</a>
         </li>
     
-        <li class="bread-crumb__content__listItem">
-            <a class="bread-crumb__content__listItem__link">Men</a>
+        <li *ngIf="gender" class="bread-crumb__content__listItem">
+            <a class="bread-crumb__content__listItem__link" [routerLink]="'/products'" [queryParams]="{gender:gender}">{{gender}}</a>
         </li>
-        <span>Shirts</span>
     </ul>
 </div>

@@ -82,3 +82,33 @@
         }
     }
 }
+
+
+@media screen and (max-width: 768px)  {
+
+    .bag-container{
+        min-height: unset;
+        margin-bottom: 2rem;
+    }
+}
+
+
+@media screen and (max-width: 400px)  {
+    .bag-container{
+        padding: 0.5rem;
+    }
+    .product-content-price{
+        display: flex;
+        flex-direction: column;
+        padding-top: 0.2rem !important;
+    }
+    .product-content-remove{
+        margin-top: 0.2rem !important;
+    }
+    .product-content-attribute{
+        padding-top: 0.2rem !important;
+    }
+}
+
+
+

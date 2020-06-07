@@ -55,3 +55,42 @@
         
     </div>
 </div>
+
+<div  class="responsive-filter-container">
+    <div class="responsive-filter-content">
+        <h5 class="responsive-filter-content-heading">
+            Filters
+        </h5> 
+        <div class="responsive-filter-content-details">
+            <div class="filter-name ">
+                <ul *ngIf="filterList" class="responsive-filter-content-details-list">
+                    <li id="filter-name-list-item-{{filterItem}}" class="responsive-filter-content-details-list-item" (click)="setSelectedFilter(filterItem)" *ngFor="let filterItem of objectKeys(filterList)">
+                        {{filterItem}}
+                    </li>
+                </ul>
+            </div>
+            <div class="filter-value">
+                <ul *ngIf="selectedMobileFilter" class="responsive-filter-content-details-list">
+                    <li *ngFor="let itemType of filterList[selectedMobileFilter]" class="responsive-filter-content-details-list-item">
+                        <input class="responsive-filter-content-details-list-item-checkbox" (ngModelChange)="applyFilter($event,itemType,selectedMobileFilter)"
+                        [(ngModel)]="itemType.checked"  type="checkbox">
+                        <span class="responsive-filter-content-details-list-item-name"> {{itemType._id}} </span>
+                        <span class="responsive-filter-content-details-list-item-count"> ({{itemType.value}}) </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="filter-footer-buttons">
+                <div (click)="clearFilters()">
+                    CLEAR
+                </div>
+                <div (click)="closeMobileFilter()">
+                    APPLY
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+ 
+
+</div>

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const Product = require('../models/product');
+const KeyWord = require('../models/keyWord');
 
 var async = require("async");
 // { contribs: { $in: [ "ALGOL", "Lisp" ]} }
@@ -13,12 +14,12 @@ function setSizeandColorQuery(valueArray,queryObject){
             queryObject["size."+element]=obj;
         });
         return queryObject;
-    
 }
 
-function setQueryObject(query) {
+async function setQueryObject(query) {
     let queryObject = {};
     let sortObj = {};
+    let searchType="";
     if (query.filter) {
         var filterArray = query.filter.split("::");
         filterArray.forEach(element => {
@@ -57,12 +58,65 @@ function setQueryObject(query) {
             sortObj[keyValArray[0]] = 1;
         }
     }
+    if(query.search){
+        //query.search= toCapitalize(query.search);
+        let search=query.search.toLowerCase();
+        let promise= new Promise((res,rej)=>{
+            res( KeyWord.find({name:search}));
+        })
+        let result= await promise;
+        console.log("promise result",result);
+        if(result.length){
+            let type=result[0].type;
+            searchType=type;
+            if(queryObject[type]){
+                let obj=queryObject[type];
+                console.log("obj",obj)
+                if(!obj["$in"].includes(query.search)){
+                    queryObject.type["$in"].push(query.search);
+                }
+            }
+            else{
+                let obj={};
+                obj["$in"]=[];
+                obj["$in"].push(query.search);
+                queryObject[type]=obj;
+            }
+        }
+        
+        
+        // KeyWord.find({name:search},(err,dataObj)=>{
+        //     if(err)console.log("keyword not present")
+        //     else{
+        //         let type=dataObj[0].type;
+        //         console.log("type",dataObj);
+        //         if(queryObject[type]){
+        //             let obj=queryObject[type];
+        //             if(!obj["$in"].includes(query.search)){
+        //                 queryObject.type["$in"].push(query.search);
+        //             }
+        //         }
+        //         else{
+        //             let obj={};
+        //             obj["$in"]=[];
+        //             obj["$in"].push(query.search);
+        //             queryObject[type]=obj;
+        //         }
+        //     }
+        // })
+        
+    }
    // console.log("queryObj",queryObject);
    // console.log("sortObj",sortObj);
     return {
         queryObject,
-        sortObj
+        sortObj,
+        searchType
     };
+}
+
+function toCapitalize(search){
+    return search[0].toUpperCase() + search.slice(1);
 }
 
 
@@ -78,6 +132,8 @@ async function fetchFilters(queryObj,filterCategory) {
             }
             return object;
         }, {});
+        console.log("element",element);
+        console.log("tempQueryObj",tempQueryObj);
         if (element == "size") {
             o.query = tempQueryObj;
             o.map = function () {
@@ -157,12 +213,19 @@ function modifyFilterObj(filterObj){
 module.exports = {
 
     async readAllProducts(req, res) {
-        let { queryObject, sortObj } = setQueryObject(req.query);
+        let { queryObject, sortObj,searchType } = await setQueryObject(req.query);
         let limit = (req.query.limit) ? req.query.limit : 0;
         limit=+limit;
         let filterCategory = ["category","brand" , "discount", "color", "size"];
+        if(filterCategory.includes(searchType)){
+            let index=filterCategory.indexOf(searchType);
+           filterCategory.splice(index,1);
+        }
+        console.log("updated filter category",filterCategory);
+        
         let filterObj = {};
         try{
+            console.log("updated query object",queryObject);
             let filterResults = await fetchFilters(queryObject,filterCategory);
             filterResults.forEach((result, num) => {
                 if (result.status == "fulfilled") {
@@ -176,7 +239,7 @@ module.exports = {
             let resultantObject = {};
             resultantObject.filterObj = filterObj;
             resultantObject.breadCrumbList = setBreadCrumbList(req.query);
-            Product.find(queryObject).sort(sortObj).limit(limit).exec((err, products) => {
+            Product.find(queryObject).sort(sortObj).exec((err, products) => {
                 if (err) console.log("error in fetching all products");
                 resultantObject.productCount = products.length;
                 resultantObject.products = products;

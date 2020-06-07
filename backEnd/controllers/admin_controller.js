@@ -2,18 +2,22 @@ const mongoose = require('mongoose');
 const _=require('underscore');
 
 const Product = require('../models/product');
+const KeyWord = require('../models/keyWord');
 
 module.exports = {
 
-    addProduct(req, res) {
-     
+    async addProduct(req, res) {
+
+        let products =await Product.find();
+        let productId=products.length;
         if(_.isArray(req.body)){
             let resultantArray=[];
             for (var key in req.body) {
                 if (req.body.hasOwnProperty(key)) {
+                    productId+=1;
                     let { name, discountedPrice, price, description, quantity, size, picture, discount, category, brand, gender ,color} = req.body[key];
                     let newProduct = new Product({
-                        name, description, price, discountedPrice, category, size, picture, discount, quantity, brand, gender, color
+                        name, description, price, discountedPrice, category, size, picture, discount, quantity, brand, gender, color,productId
                     });
                     newProduct.save();
                     resultantArray.push(newProduct);
@@ -22,9 +26,10 @@ module.exports = {
              res.status(201).json(resultantArray);
         }
         else{
+            productId+=1;
             let { name, discountedPrice, price, description, quantity, size, picture, discount, category, brand, gender,color } = req.body;
             let newProduct = new Product({
-                name, description, price, discountedPrice, category, size, picture, discount, quantity, brand, gender,color
+                name, description, price, discountedPrice, category, size, picture, discount, quantity, brand, gender,color,productId
             });
             newProduct.save();
             res.status(201).json({newProduct}); 
@@ -74,6 +79,15 @@ module.exports = {
             console.log("product:", product);
             res.status(200).json({ product });
         })
+    },
+
+    addKeyword(req,res){
+        let keyword= new KeyWord({
+           name: req.body.name,
+           type:req.body.type
+        })
+        keyword.save();
+        res.status(201).json(keyword);
     }
 
    

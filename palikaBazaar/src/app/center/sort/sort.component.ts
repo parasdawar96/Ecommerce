@@ -12,6 +12,7 @@ export class SortComponent implements OnInit {
     productsCount:Number;
     sortList:Array<Object>;
     selectedOption: any;
+    gender:"";
   constructor(private productService:ProductStateService,private commonService:CommonService,private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -23,7 +24,10 @@ export class SortComponent implements OnInit {
           {value:"discount_asc",viewValue:"Discount Low to High"}
       ]
     this.productService.productResponseObs$.subscribe((response:any)=>{
+
         this.productsCount=response.productCount;
+        if(response.products) this.gender=response.products[0].gender;
+       
     });
   }
 

@@ -23,7 +23,12 @@ export class ApiService {
     constructor(private http: HttpClient) { }
 
     getProducts(queryParam) {
-        return this.http.get(environment.apiBaseUrl + "/products?limit=50&" + queryParam, httpOptions);
+        // let searchParam="";
+        // let searchVal=sessionStorage.getItem("search");
+        // if(searchVal && searchVal!=""){
+        //     searchParam="&search="+searchVal +"&";
+        // }
+        return this.http.get(environment.apiBaseUrl + "/products?" +queryParam, httpOptions);
     }
 
     getProductDetails(id) {
@@ -66,5 +71,13 @@ export class ApiService {
     fetchAddress(id){
         return this.http.get(environment.apiBaseUrl+ "/account/fetchAddress/"+id,authHttpOptions);
     }
+
+    purchase(body){
+        return this.http.post(environment.apiBaseUrl+'/purchase',body,authHttpOptions);
+    }
+    updateOrder(body){
+        return this.http.post(environment.apiBaseUrl+'/updateOrder',body,httpOptions);
+    }
+    
 
 }

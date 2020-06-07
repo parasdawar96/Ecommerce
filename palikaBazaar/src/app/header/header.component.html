@@ -1,110 +1,193 @@
 <header>
-    <div class="header-content clearfix">
-        <div class="header-logo">
-            PALIKA BAZAAR
-        </div>
-        <!-- navbar-light bg-light -->
-        <nav class="header-navbar">
-            <div class="header-navbar-links">
-                <div class="header-nav-content">
-                    <div class="header-link">
-                        <a class="link_men" [routerLink]="'/products'" [queryParams]="{gender:'men'}"  >MEN</a>
-                        <div class="dropdown-backdrop">
-                            <div class="dropdown-content">
-                                <div class="row category-content">
-                                    <div class="col-sm-3  category-list">
-                                        <span>CLOTHING</span>
-                                        <ul>
-    
-                                            <li>Beach & Swim</li>
-                                            <li>Coats & Jackets</li>
-                                            <li>Hoodies & Jumpers</li>
-                                            <li>Jeans</li>
-                                            <li>Polo Shirts</li>
-                                            <li>Shirts</li>
-                                            <li>Sweatpants & Trousers</li>
-                                            <li>T-Shirts</li>
-                                            <li>Tracksuits</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-3 even-column-content category-list">
-                                        <span> SHOES </span>
-                                        <ul>
-                                            <li>Boots & Loafers</li>
-                                            <li>Sliders & Sandals</li>
-                                            <li>Trainers & Sneakers</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-3  category-list">
-                                        <span>ACCESSORIES</span>
-                                        <ul>
-                                            <li>Belts</li>
-                                            <li>Wallets</li>
-                                            <li>Hats</li>
-                                            <li>Sunglasses</li>
-                                            <li>Cufflinks</li>
-                                            <li>Hats</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-3 even-column-content category-list">
-                                        <span>ACCESSORIES</span>
-                                        <ul>
-                                            <li>Belts</li>
-                                            <li>Wallets</li>
-                                            <li>Hats</li>
-                                            <li>Sunglasses</li>
-                                            <li>Cufflinks</li>
-                                            <li>Hats</li>
-                                        </ul>
+    <div class="header-content">
+        <div class="main-nav">
+
+
+            <div class="header-logo">
+                <img style="height: 5rem;width :7.5rem" src="../../assets/img/palikaBazaar.png">
+            </div>
+            <!-- navbar-light bg-light -->
+            <nav class="header-navbar">
+                <div class="header-navbar-links">
+                    <div class="header-nav-content">
+                        <div class="header-link">
+                            <a class="link_men" [routerLink]="'/products'" [queryParams]="{gender:'men'}">MEN</a>
+                            <div class="dropdown-backdrop">
+                                <div class="dropdown-content">
+                                    <div class="row category-content">
+                                        <div class="col-sm-3  category-list">
+                                            <span>CLOTHING</span>
+                                            <ul>
+
+                                                <li>Beach & Swim</li>
+                                                <li>Coats & Jackets</li>
+                                                <li>Hoodies & Jumpers</li>
+                                                <li>Jeans</li>
+                                                <li>Polo Shirts</li>
+                                                <li>Shirts</li>
+                                                <li>Sweatpants & Trousers</li>
+                                                <li>T-Shirts</li>
+                                                <li>Tracksuits</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-3 even-column-content category-list">
+                                            <span> SHOES </span>
+                                            <ul>
+                                                <li>Boots & Loafers</li>
+                                                <li>Sliders & Sandals</li>
+                                                <li>Trainers & Sneakers</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-3  category-list">
+                                            <span>ACCESSORIES</span>
+                                            <ul>
+                                                <li>Belts</li>
+                                                <li>Wallets</li>
+                                                <li>Hats</li>
+                                                <li>Sunglasses</li>
+                                                <li>Cufflinks</li>
+                                                <li>Hats</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-3 even-column-content category-list">
+                                            <span>ACCESSORIES</span>
+                                            <ul>
+                                                <li>Belts</li>
+                                                <li>Wallets</li>
+                                                <li>Hats</li>
+                                                <li>Sunglasses</li>
+                                                <li>Cufflinks</li>
+                                                <li>Hats</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
 
 
 
-                </div>
-                <div class="header-nav-content">
-                    <div class="header-link">
-                        <a  [routerLink]="'/products'" [queryParams]="{gender:'women'}">WOMEN</a>
-                    </div>
-                </div>
-                <div class="header-nav-content">
-                    <div class="header-link">
-                        <a href="#">KIDS</a>
-                    </div>
-                </div>
-                <div class="header-nav-content">
-                    <div class="header-link">
-                        <a href="#">ESSENTIALS </a>
-                    </div>
-                </div>
-                <div class="header-nav-content">
-                    <div class="header-link">
-                        <a href="#">SALE</a>
-                    </div>
-                </div>
 
+                    </div>
+                    <div class="header-nav-content">
+                        <div class="header-link">
+                            <a [routerLink]="'/products'" [queryParams]="{gender:'women'}">WOMEN</a>
+                        </div>
+                    </div>
+                    <div class="header-nav-content">
+                        <div class="header-link">
+                            <a href="#">KIDS</a>
+                        </div>
+                    </div>
+                    <div class="header-nav-content">
+                        <div class="header-link">
+                            <a href="#">ESSENTIALS </a>
+                        </div>
+                    </div>
+                    <div class="header-nav-content">
+                        <div class="header-link">
+                            <a href="#">SALE</a>
+                        </div>
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+        <div class="responsive-nav">
+            <a id="ham-menu-button" (click)="openHamMenu()" class="responsive-nav-icon">
+                <img src="../../assets/img/hamBurgerMenu.svg"> </a>
+
+            <div (click)="closeHamMenu()" id="ham-menu" class="hamburger-menu-backdrop">
+                <div class="hamburger-menu-content">
+                    <div *ngIf="!LoggedIn" class="hamburger-menu-content-main">
+                        <h5 class="hamburger-menu-content-heading">
+                            Welcome Guest
+                        </h5>
+                        <div class="hamburger-menu-content-login">
+                            <a [routerLink]="'/account/login'">Login</a>
+                            <span>or</span>
+                            <a [routerLink]="'/account/signup'">Sign Up</a>
+                        </div>
+                    </div>
+                    <div class="hamburger-menu-content-main" *ngIf="LoggedIn">
+                        <h5 class="capitalize hamburger-menu-content-heading">Welcome {{firstName}}</h5>
+                        <div class="hamburger-menu-content-login">
+                            <a class="logoutbutton" (click)="logout()">Logout</a>
+                        </div>
+                       
+                    </div>
+                    <div class="hamburger-menu-content-details">
+                        <div class="hamburger-menu-content-details-shop">
+                            <span class="hamburger-menu-content-details-heading">SHOP IN</span>
+                            <ul class="hamburger-menu-content-details-list">
+                                <li class="hamburger-menu-content-details-list-item">
+                                    <a [routerLink]="'/products'" [queryParams]="{gender:'men'}">MEN</a>
+                                </li>
+                                <li class="hamburger-menu-content-details-list-item">                
+                                    <a [routerLink]="'/products'" [queryParams]="{gender:'women'}">WOMEN</a>
+                                </li>
+                                <li class="hamburger-menu-content-details-list-item">KIDS</li>
+                                <li class="hamburger-menu-content-details-list-item">ESSENTIALS</li>
+                                <li class="hamburger-menu-content-details-list-item">SALE</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
-        </nav>
 
-        <div class="header-search">
-            <input type="text" name="search" placeholder="Search for products, brands and more" autocomplete="off">
-        </div>
-
-        <div class="header-actions">
-            <a  [routerLink]="'/account/login'"><img src="../../assets/img/user.svg">
-                <span>Profile</span>
+            <a (click)="goBack()" id="back-button-link" class="back-button-link">
+                <img src="../../assets/img/back.svg">
             </a>
 
-            <a  [routerLink]="'/cart/bag'"><img src="../../assets/img/bag.svg">
-                <span>Bag</span>
-            </a>
+            <div class="header-logo">
+                <img style="height: 5rem;width :7.5rem" src="../../assets/img/palikaBazaar.png">
+            </div>
         </div>
 
 
+        <div class="right-header">
+            <div class="header-search">
+                <input id="searchElem" class="header-search-input" type="text" name="search"
+                    placeholder="Search for products or brands" autocomplete="off">
+                <a class="header-search-icon" (click)="openSearchBar()"><img style="width: 1.5rem;" src="../../assets/img/search.svg"></a>
+            </div>
+
+            <div class="header-actions">
+                <div class="header-action-profile">
+                    <a class="user-profile-icon"><img src="../../assets/img/user.svg">
+                        <span>Profile</span>
+                        <div class="profile-menu">
+                            <div class="logged-out-div" *ngIf="!LoggedIn">
+                                <h5>Welcome Guest</h5>
+                                <div class="logged-out-div-links">
+                                    <a [routerLink]="'/account/login'">Login</a>
+                                    <span>or</span>
+                                    <a [routerLink]="'/account/signup'">Sign Up</a>
+                                </div>
+                            </div>
+                            <div class="logged-out-div" *ngIf="LoggedIn">
+                                <h5 class="capitalize">Welcome {{firstName}}</h5>
+                                <a class="logoutbutton" (click)="logout()">Logout</a>
+                                <!-- <ul>
+                                    <li><a (click)="logout()">Logout</a></li>
+                                </ul> -->
+                            </div>
+                            
+                        </div>
+                    </a>
+                </div>
+                <div class="header-action-cart">
+                    <a [routerLink]="'/cart/bag'"><img src="../../assets/img/bag.svg">
+                        <span>Bag</span>
+                    </a>
+                </div>
+              
+
+                
+            </div>
+        </div>
     </div>
 
 </header>

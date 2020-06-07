@@ -1,8 +1,16 @@
 .header-logo{
     font-size: 2.5rem;
     display: flex;
-    padding: 0.5rem 2rem;
+    padding: 0.5rem;
     background-color: #f8f8f8;
+    .back-button-link{
+        display: none;
+        margin-right: 0.5rem;
+        img{
+            width: 2rem;
+            height: 2rem;
+        }
+    }
 }
 
 .footer-payment-info{
@@ -36,5 +44,75 @@
     .order-container{
         border-left: 1px solid #f1f1f1;
        
+    }
+}
+
+
+.empty-cart-container{
+ 
+    height: 80vh;
+    .empty-cart-box{
+        width:30%;   
+       display: flex;
+       margin:auto;
+       padding: 7rem 0;
+       flex-direction: column;
+       justify-content: space-around;
+       text-align: center;
+        &-icon{
+            margin-bottom: 1.5rem;
+            img{
+                height: 8rem;
+                width: 8rem;
+            }
+        }
+        &-button{
+            margin-top: 0.5rem;
+            button{
+                background: #ff4b72;
+                cursor:pointer;
+                color: #fff;
+                border: 1px solid ;
+                border-radius:3px ;
+                font-size:1.2rem ;
+                font-weight: 500;
+                padding: 0.5rem;
+                width: 63%;
+            }
+        }
+        &-detail{
+            font-size:1.2rem;
+            color: #ff4b72;
+        }
+        
+    }
+}
+
+
+
+
+
+
+@media screen and (max-width: 1080px) {
+
+    .cart-container{
+        width:100% ;
+    }
+    
+}
+
+
+@media screen and (min-width: 1081px) and (max-width: 1350px) {
+
+    .cart-container{
+        width:90% ;
+    }
+    
+}
+
+
+@media screen and (max-width: 768px) {
+    .back-button-link{
+        display: block !important;
     }
 }

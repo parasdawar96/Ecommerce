@@ -1,5 +1,5 @@
 .address-container{
-    height: 79vh;
+    min-height: 79vh;
     padding: 2rem;
 }
 
@@ -167,4 +167,13 @@
 
 .error_element{
     line-height: 1;
+}
+
+
+
+@media screen and (max-width: 768px)  {
+    .address-container{
+        min-height: unset;
+        margin-bottom: 2rem;
+    }
 }

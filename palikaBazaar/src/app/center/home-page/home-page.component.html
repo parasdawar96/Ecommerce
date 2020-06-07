@@ -1,13 +1,13 @@
-<section class="center-panel">
-    <section class="row offer m-0 ">
-        <div class="col-sm-6 offer-content1 p-0">
-            <a class="p-0">
-                <img src="../../assets/img/main_section_offer1.png">
+<section >
+    <section class="poster-content">
+        <div>
+            <a [routerLink]="'/products'" [queryParams]="{gender:'men'}">
+                <img src="../../../assets/img/bp2.png">
             </a>
         </div>
-        <div class="col-sm-6 offer-content2 p-0">
-            <a class="p-0">
-                <img src="../../assets/img/offerImage2.png">
+        <div>
+            <a [routerLink]="'/products'" [queryParams]="{gender:'women'}">
+                <img src="../../../assets/img/bp1.png">
             </a>
         </div>
     
@@ -54,9 +54,18 @@
               </div>
           </swiper>
     </section>
+    <section class="men-image-frame">
+        <div>
+            <div><a [routerLink]="'/products'" [queryParams]="{gender:'men',filter:'category:tshirts'}"><img src="../../../assets/img/m1.png"> </a></div>
+            <div><a [routerLink]="'/products'" [queryParams]="{gender:'men',filter:'category:casual shirts'}"><img src="../../../assets/img/m2.png"> </a></div>
+        </div>
+        <div>
+            <div><a [routerLink]="'/products'" [queryParams]="{gender:'men',filter:'category:formal shirts'}"><img src="../../../assets/img/m3.png"> </a></div>
+            <div><a [routerLink]="'/products'" [queryParams]="{gender:'men',filter:'category:denims'}"><img src="../../../assets/img/m4.png"> </a></div>
+        </div>
+    </section>
     
-    
-    <section class="new-arrivals">
+    <!-- <section class="new-arrivals">
         <h4>NEW ARRIVALS</h4>
         <swiper  class="swiper-container" fxFlex="auto" [config]="config1" >
             <div class="swiper-slide">
@@ -273,8 +282,17 @@
             </div>
             
           </swiper>
+    </section> -->
+    <section class="women-image-frame">
+        <div>
+            <div><a [routerLink]="'/products'" [queryParams]="{gender:'women',filter:'category:top'}"><img src="../../../assets/img/w1.png"> </a></div>
+            <div><a [routerLink]="'/products'" [queryParams]="{gender:'women',filter:'category:tshirts'}"><img src="../../../assets/img/w2.png"> </a></div>
+        </div>
+        <div>
+            <div><a [routerLink]="'/products'" [queryParams]="{gender:'women',filter:'category:casual shirts'}"><img src="../../../assets/img/w3.png"> </a></div>
+            <div><a [routerLink]="'/products'" [queryParams]="{gender:'women',filter:'category:denims'}"><img src="../../../assets/img/w4.png"> </a></div>
+        </div>
     </section>
-    
     <section class="brand-advertisement">
     
     </section>

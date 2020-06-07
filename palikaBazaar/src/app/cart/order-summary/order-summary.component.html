@@ -1,5 +1,5 @@
 <div class="order-container">
-    <div class="order-content">
+    <div  class="order-content">
         <div class="order-content-heading">
             Order Summary
         </div>
@@ -9,7 +9,7 @@
         </div>
         <div class="order-content-shipping">
             <span>Shipping Charges</span>
-            <span class="green" >FREE</span>
+            <span class="green">FREE</span>
         </div>
         <div class="order-content-discount">
             <span>Bag Discount</span>
@@ -19,14 +19,56 @@
             <span>Payable Amount</span>
             <span>Rs {{cartSummary.payable}}</span>
         </div>
-        <div class="order-content-saving" >You are saving Rs {{cartSummary.discount}} on this order.</div>
+        <div class="order-content-saving">You are saving Rs {{cartSummary.discount}} on this order.</div>
         <div class="order-content-final">
             <span>Final Amount</span>
-            <span>Rs {{cartSummary.payable}}</span>
+            <span>Rs{{cartSummary.payable}}</span>
         </div>
         <div class="order-content-button">
-            <button *ngIf="!loggedIn" (click)="setPreviousRoute()" [routerLink]="'/account/login'" >Login First</button>
-            <button *ngIf="loggedIn"   [routerLink]="'/cart/address'" >Select Delivery Address</button>
+            <button class="button" *ngIf="!loggedIn" (click)="setPreviousRoute()" [routerLink]="'/account/login'">Login
+                First</button>
+            <span *ngIf="loggedIn ">
+                <button class="button" *ngIf="inCart" (click)="goToAddress()" [routerLink]="'/cart/address'">Select
+                    Delivery Address</button>
+                <button class="button" *ngIf="!inCart" (click)="checkSelectedAddress()">Place Order</button>
+            </span>
+
+            <!-- [routerLink]="'/cart/checkout'" -->
+
+
         </div>
     </div>
+
+    <!-- <div *ngIf="orderSuccess" class="order-success">
+
+        <div class="order-success-content">
+            <h5 class="order-success-content-heading">ORDER SUMMARY</h5>
+            <div class="order-success-content-details">
+                <div>
+                    3 items
+                </div>
+                <div class="bold">
+                    Rs 899
+                </div>
+            </div>
+        </div>
+        <div class="order-success-address">
+            <h5 class="order-success-address-heading">ORDER TO:</h5>
+            <div>
+                Paras Dawar
+                13/182, Geeta Colony,
+                Delhi-110031, India.
+                Mobile: 8800387824.
+            </div>
+
+        </div>
+        <div class="order-success-mode">
+            <h5 class="order-success-mode-heading">
+                PAYMENT MODE
+            </h5>
+            <div>
+                Cash on Delivery.
+            </div>
+        </div>
+    </div> -->
 </div>

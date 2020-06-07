@@ -6,7 +6,6 @@
 }
 
 .signUp-content{
-    width: 25%;
     margin:5rem auto auto;
     background-color: #fff;
     padding: 2rem;
@@ -36,13 +35,15 @@
             width: 100%;
            
         }
+        input[type=submit]:hover{
+            background-color: #282828;
+        }
         label{
             margin-top: 0.6rem;
         }
     }
 
     .already-account-content{
-        width: 85%;
         margin: 0 auto;
         margin-top: 0.5rem;;
         button{

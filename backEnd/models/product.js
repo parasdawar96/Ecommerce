@@ -17,6 +17,7 @@ const product = new Schema({
     color:String,
     pattern:String,
     type:String,
+    productId:Number
 });
 
 module.exports = mongoose.model('Product',product,"products_eComm");

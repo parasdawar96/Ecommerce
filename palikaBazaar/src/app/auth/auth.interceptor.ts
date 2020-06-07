@@ -18,7 +18,7 @@ export class AuthInterceptor implements HttpInterceptor {
                 this.productService.loadingState=false;
             },
             err=>{
-                this.productService.loadingState=false;
+                 this.productService.loadingState=false;
             }
             ));
         else {

@@ -42,15 +42,21 @@
         }
 
         &-button{
-            padding: 1rem 0;
-            button{
+            
+            .button{
             width: 100%;
             padding:0.5rem;
             font-weight: 500;
             font-size: 1.2rem;
-            background-color: #686868;
+            background-color: #000;
+    
             color: #fff;
             border: none;
+            margin: 1rem 0;
+            }
+
+            .button:hover{
+                background-color: #282828;
             }
         }
     
@@ -59,4 +65,34 @@
 
 .green{
     color:#6fba31;
+}
+
+.order-success{
+    &-content,&-address,&-mode{
+        margin-bottom: 1.5rem;
+        &-heading{
+            font-weight: 500;
+            color: #a1a4a4;
+        }
+    }
+    &-content{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .bold{
+        font-weight: 700;
+    }
+}
+
+
+
+@media screen and (min-width: 769px) and (max-width: 1080px) {
+
+    .order-container{
+        padding: 4rem 0;
+    }
+    .order-content{
+        padding:0.5rem;
+    }
 }

@@ -11,13 +11,14 @@ const passport = require('passport');
 
 const mongoose = require('mongoose');
 mongoose.set('debug', true);
+const PORT=process.env.PORT ||3001;
 
 const admin_controller = require('./controllers/admin_controller');
 const products_controller = require('./controllers/products_conroller');
 const cartCtrl = require('./controllers/cart_controller');
+const orderCtrl = require('./controllers/order_controller');
 
-
-
+const jwtVerification= require('./config/jwtVerification');
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -41,7 +42,10 @@ mongoose.connect(process.env.CONNECTION_STRING,
 
 app.use('/account', routes);
 app.use('/cart', cartRoutes);
+app.post('/addkey', admin_controller.addKeyword)
 //app.get('/cart/:id',cartCtrl.fetchCart);
+app.post('/purchase',jwtVerification.verifyJwtToken,orderCtrl.purchase);
+app.post('/updateOrder',orderCtrl.updateOrder);
 app.get('/products', products_controller.readAllProducts);
 app.get('/product-details/:id', products_controller.readProduct);
 app.post('/products', admin_controller.addProduct);
@@ -57,6 +61,6 @@ app.use((err, req, res, next) => {
         res.status(422).send(valErrors);
     }
 });
-app.listen(3001, () => {
-    console.log("server is running");
+app.listen(PORT, () => {
+    console.log(`server is running at ${PORT}`);
 })
