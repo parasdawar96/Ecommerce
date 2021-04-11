@@ -28,55 +28,55 @@ export class ApiService {
         // if(searchVal && searchVal!=""){
         //     searchParam="&search="+searchVal +"&";
         // }
-        return this.http.get(environment.apiBaseUrl + "/products?" +queryParam, httpOptions);
+        return this.http.get(environment.apiBaseUrl +"/api" +"/products?" +queryParam, httpOptions);
     }
 
     getProductDetails(id) {
 
-        return this.http.get(environment.apiBaseUrl + "/product-details/" + id, httpOptions);
+        return this.http.get(environment.apiBaseUrl +"/api" + "/product-details/" + id, httpOptions);
     }
 
 
     postUser(user: User) {
-        return this.http.post(environment.apiBaseUrl + "/account/register", user, httpOptions);
+        return this.http.post(environment.apiBaseUrl +"/api" + "/account/register", user, httpOptions);
     }
 
     login(authCredentials) {
-        return this.http.post(environment.apiBaseUrl + "/account/authenticate", authCredentials, httpOptions);
+        return this.http.post(environment.apiBaseUrl +"/api" + "/account/authenticate", authCredentials, httpOptions);
     }
 
     getUserProfile(){
-        return this.http.get(environment.apiBaseUrl+"/account/userProfile",authHttpOptions);
+        return this.http.get(environment.apiBaseUrl+"/api" +"/account/userProfile",authHttpOptions);
     }
 
 
     fetchCart(id,body){
-        return this.http.post(environment.apiBaseUrl+ "/cart/"+id,body,httpOptions);
+        return this.http.post(environment.apiBaseUrl+"/api" +"/cart/"+id,body,httpOptions);
     }
 
     addToCart(id,body){
-        return this.http.put(environment.apiBaseUrl+ "/cart/add/"+id,body,httpOptions);
+        return this.http.put(environment.apiBaseUrl+"/api" + "/cart/add/"+id,body,httpOptions);
     }
 
     removeFromCart(id,body){
-        return this.http.put(environment.apiBaseUrl+ "/cart/remove/"+id,body,httpOptions);
+        return this.http.put(environment.apiBaseUrl+"/api" + "/cart/remove/"+id,body,httpOptions);
     }
 
 
     addAddress(id,body){
-        return this.http.post(environment.apiBaseUrl+ "/account/addAddress/"+id,body,authHttpOptions);
+        return this.http.post(environment.apiBaseUrl+"/api" + "/account/addAddress/"+id,body,authHttpOptions);
     }
 
     
     fetchAddress(id){
-        return this.http.get(environment.apiBaseUrl+ "/account/fetchAddress/"+id,authHttpOptions);
+        return this.http.get(environment.apiBaseUrl+"/api" + "/account/fetchAddress/"+id,authHttpOptions);
     }
 
     purchase(body){
-        return this.http.post(environment.apiBaseUrl+'/purchase',body,authHttpOptions);
+        return this.http.post(environment.apiBaseUrl+"/api" +'/purchase',body,authHttpOptions);
     }
     updateOrder(body){
-        return this.http.post(environment.apiBaseUrl+'/updateOrder',body,httpOptions);
+        return this.http.post(environment.apiBaseUrl+"/api" +'/updateOrder',body,httpOptions);
     }
     
 

@@ -18,15 +18,20 @@ export class SortComponent implements OnInit {
   ngOnInit() {
 
       this.sortList=[
-          {value:"price_desc",viewValue:"Price High to Low"},
-          {value:"price_asc",viewValue:"Price Low to High"},
+          {value:"discountedPrice_desc",viewValue:"Price High to Low"},
+          {value:"discountedPrice_asc",viewValue:"Price Low to High"},
           {value:"discount_desc",viewValue:"Discount High to Low"},
           {value:"discount_asc",viewValue:"Discount Low to High"}
       ]
     this.productService.productResponseObs$.subscribe((response:any)=>{
 
         this.productsCount=response.productCount;
-        if(response.products) this.gender=response.products[0].gender;
+        if(response.products && response.products.length) {
+            this.gender=response.products[0].gender;
+        }
+        else{
+            this.gender="";
+        }
        
     });
   }

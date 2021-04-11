@@ -7,6 +7,7 @@ import { ProductStateService } from 'src/app/service/product-state.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/service/api.service';
+import {environment} from 'src/environments/environment.prod';
 
 declare var $: any;
 @Component({
@@ -50,7 +51,7 @@ export class ProductDetailComponent implements OnInit {
             if (response) {
                 this.productObj = response;
                 this.sizeList = this.productObj.size;
-                let picture="http://localhost:3001"+ this.productObj.picture;
+                let picture=environment.apiBaseUrl+ this.productObj.picture;
                 this.galleryImages = [
                     {
                         small: picture,
@@ -68,38 +69,39 @@ export class ProductDetailComponent implements OnInit {
                         big: picture
                     }
                 ];
+                this.galleryOptions = [
+                    {
+                        width: '600px',
+                        height: '400px',
+                        thumbnailsColumns: 3,
+                        imagePercent: 100,
+                        preview: false,
+                        imageSize: NgxGalleryImageSize.Contain,
+                        thumbnailSize: NgxGalleryImageSize.Contain,
+                        imageAnimation: NgxGalleryAnimation.Slide
+                    },
+                    // max-width 800
+                    {
+                        breakpoint: 800,
+                        width: '100%',
+                        height: '600px',
+                        imagePercent: 80,
+                        thumbnailsPercent: 20,
+                        thumbnailsMargin: 20,
+                        thumbnailMargin: 20
+                    },
+                    // max-width 400
+                    {
+                        breakpoint: 400,
+                        preview: false
+                    }
+                ];
+        
             }
 
         });
 
-        this.galleryOptions = [
-            {
-                width: '600px',
-                height: '400px',
-                thumbnailsColumns: 3,
-                imagePercent: 100,
-                preview: false,
-                imageSize: NgxGalleryImageSize.Contain,
-                thumbnailSize: NgxGalleryImageSize.Contain,
-                imageAnimation: NgxGalleryAnimation.Slide
-            },
-            // max-width 800
-            {
-                breakpoint: 800,
-                width: '100%',
-                height: '600px',
-                imagePercent: 80,
-                thumbnailsPercent: 20,
-                thumbnailsMargin: 20,
-                thumbnailMargin: 20
-            },
-            // max-width 400
-            {
-                breakpoint: 400,
-                preview: false
-            }
-        ];
-
+     
 
     }
 

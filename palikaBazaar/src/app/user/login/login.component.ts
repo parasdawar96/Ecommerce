@@ -56,10 +56,12 @@ export class LoginComponent implements OnInit {
       
       },
       err=>{
+         
         if(err.status== 422){
             this.serverErrorMessages= err.error.join('<br/>');
         }
         else{
+            this.serverErrorMessages=err.error.message;
           console.log("Err",err);
         }
       })

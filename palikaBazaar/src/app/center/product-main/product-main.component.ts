@@ -30,7 +30,12 @@ export class ProductMainComponent implements OnInit {
             this.productList = response.products;
             //console.log("prod list",this.productList);
             this.productsCount=response.productCount;
-            this.gender=response.products[0].gender;
+            if(response.products && response.products.length) {
+                this.gender=response.products[0].gender;
+            }
+            else{
+                this.gender="";
+            }
         }
        
     });

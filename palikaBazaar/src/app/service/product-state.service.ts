@@ -38,7 +38,7 @@ export class ProductStateService {
         this._productsResponse = {};
         this._orderSummary = {};
         this._isLoading = false;
-        this._cartProducts = [],
+        this._cartProducts = [];
             this._deliveryAddress = {};
         this._filterObj = {};
         this._isLoggedIn = false;

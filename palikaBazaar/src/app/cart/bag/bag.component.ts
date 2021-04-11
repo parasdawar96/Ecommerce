@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/service/common.service';
 import { ApiService } from 'src/app/service/api.service';
 import { ProductStateService } from 'src/app/service/product-state.service';
-
+import { environment } from '../../../environments/environment';
 @Component({
     selector: 'app-bag',
     templateUrl: './bag.component.html',
@@ -14,6 +14,7 @@ export class BagComponent implements OnInit {
     constructor(private commonService: CommonService, private apiService: ApiService, private productStateService: ProductStateService) { }
 
     ngOnInit(): void {
+        this.backendHost=environment.apiBaseUrl;
         this.productStateService.cartProductObs$.subscribe(data=>{
                 this.cartProducts=data;
         });
