@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/service/api.service';
 import { ProductStateService } from 'src/app/service/product-state.service';
 import { CommonService } from 'src/app/service/common.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'products',
@@ -13,6 +14,7 @@ export class ProductsComponent implements OnInit {
 
     productList;
     prod;
+    backendHostName="";
     constructor(private productService: ProductStateService, private commonService: CommonService, private router: Router, private activatedRoute: ActivatedRoute) {
         // router.routeReuseStrategy.shouldReuseRoute = function(){
         //     return false;
@@ -21,12 +23,14 @@ export class ProductsComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.backendHostName=environment.apiBaseUrl;
         this.activatedRoute.queryParamMap.subscribe((res: any) => {
             let finalQueryParam = this.commonService.setQueryParam(res.params);
             this.commonService.fetchProducts(finalQueryParam);
         });
 
         this.productService.productResponseObs$.subscribe((response: any) => {
+            
             this.productList = response.products;
         });
 

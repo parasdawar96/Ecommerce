@@ -3,7 +3,7 @@
         <li class="products-content__item" *ngFor="let item of productList">
             <a [routerLink]="['/product-details', item._id]" class="products-content__item__Link">
                 <div class="products-content__item__Link__Image">
-                    <img src="http://localhost:3001{{item.picture}}">
+                    <img src="{{backendHostName}}{{item.picture}}">
                 </div>
                 <div class="products-content__item__Link__details">
                     <span class="product-brand" >{{item.brand}}</span>

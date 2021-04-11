@@ -7,7 +7,7 @@
 
 }
 .poster-content{
-    padding: 2rem 6rem;
+    padding: 2rem 4rem;
     display: flex;
     flex-direction: row;
     height: 90vh;
@@ -81,7 +81,9 @@
 
 .carousel-item {margin-right: auto !important;}
 
-
+.slider-corousal{
+    padding: 0 4rem;
+}
 @media screen and (max-width: 768px) {
     .women-image-frame,.men-image-frame{
         padding:1rem 0 0;

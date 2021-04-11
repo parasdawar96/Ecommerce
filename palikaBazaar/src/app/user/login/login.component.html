@@ -23,7 +23,7 @@
             <span>Don't have an account?</span>   
             <button  [routerLink]="'/account/signup'" >Sign Up</button>
         </div>
-        <div *ngIf="serverErrorMessages">
+        <div class="server-error-messages" *ngIf="serverErrorMessages">
             {{serverErrorMessages}}
         </div>
     </div>

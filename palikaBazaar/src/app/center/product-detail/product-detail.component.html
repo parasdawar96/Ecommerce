@@ -5,7 +5,7 @@
 
     <div *ngIf="productObj" class="container product-detail-container">
         <div class=" row product-detail">
-            <div class=" col-sm-12 col-md-8 product-detail_image">
+            <div *ngIf=" galleryImages && galleryImages.length" class=" col-sm-12 col-md-8 product-detail_image">
                 <!-- <div class="product-detail_image_small_container">
                 <div class="product-detail_image_small_container__others">
                     <img src="../../../assets/img/myntra_shirt1.png">
